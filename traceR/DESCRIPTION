@@ -1,0 +1,50 @@
+Package: traceR
+Title: Metadata-Driven, Reproducible Objective-to-Result Traceability for CDISC Studies
+Version: 0.1.0
+Authors@R:
+    person("Appsilon", "traceR", email = "vedha@appsilon.com", role = c("aut", "cre"))
+Description: A general, metadata-driven framework that maps clinical study
+    lineage exhaustively from Objective to Endpoint to Analysis to Output
+    (Tables, Figures, Listings) down to the ADaM and SDTM variables and
+    Controlled Terminology that produced each result, across CDISC standards
+    (USDM, ARS, ARD, ADaM, SDTM). It ingests machine-readable metadata
+    (USDM study definitions, ARS Reporting Events, define.xml, and the CDISC
+    Library API), assembles a typed traceability graph, validates coverage and
+    detects gaps, executes standard analyses into Analysis Results Datasets
+    (ARD), and emits reproducible, content-hashed traceability artifacts. The
+    goal is a traceable artifact that pins an objective to its result so that
+    AI-assisted automation becomes reproducible by construction.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    cli,
+    digest,
+    dplyr,
+    igraph,
+    jsonlite,
+    purrr,
+    rlang,
+    tibble,
+    xml2
+Suggests:
+    cards,
+    cardx,
+    gt,
+    gtsummary,
+    ggplot2,
+    broom,
+    emmeans,
+    survival,
+    httr2,
+    visNetwork,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/appsilon/cdisc-case-3

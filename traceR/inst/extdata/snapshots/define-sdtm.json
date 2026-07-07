@@ -1,0 +1,3139 @@
+{
+  "product": "define:sdtm",
+  "version": "study",
+  "retrieved": "2026-07-07 17:21:15.021309",
+  "sha": "5bcbee24c751d28a4aaf3e829fa87895",
+  "n_variables": 313,
+  "variables": [
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "ARMCD",
+      "label": "Planned Arm Code",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "ARM",
+      "label": "Description of Planned Arm",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "TAETORD",
+      "label": "Order of Element within Arm",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "ETCD",
+      "label": "Element Code",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "ELEMENT",
+      "label": "Description of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "TABRANCH",
+      "label": "Branch",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "TATRANS",
+      "label": "Transition Rule",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TA",
+      "variable": "EPOCH",
+      "label": "Epoch",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "ETCD",
+      "label": "Element Code",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "ELEMENT",
+      "label": "Description of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "TESTRL",
+      "label": "Rule for Start of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "TEENRL",
+      "label": "Rule for End of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TE",
+      "variable": "TEDUR",
+      "label": "Planned Duration of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "IETESTCD",
+      "label": "Incl/Excl Criterion Short Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "IETEST",
+      "label": "Inclusion/Exclusion Criterion",
+      "data_type": "text",
+      "origin": "CRF Pages 1, 2, 3, 4, 5, 6"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "IECAT",
+      "label": "Inclusion/Exclusion Category",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TI",
+      "variable": "TIRL",
+      "label": "Inclusion/Exclusion Criterion Rule",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "TSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "TSPARMCD",
+      "label": "Trial Summary Parameter Short Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "TSPARM",
+      "label": "Trial Summary Parameter",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TS",
+      "variable": "TSVAL",
+      "label": "Parameter Value",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "ARMCD",
+      "label": "Planned Arm Code",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "ARM",
+      "label": "Description of Planned Arm",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "TVSTRL",
+      "label": "Visit Start Rule",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "TV",
+      "variable": "TVENRL",
+      "label": "Visit End Rule",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "SUBJID",
+      "label": "Subject Identifier for the Study",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFSTDTC",
+      "label": "Subject Reference Start Date/Time",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFENDTC",
+      "label": "Subject Reference End Date/Time",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFXSTDTC",
+      "label": "Date/Time of First Study Treatment",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFXENDTC",
+      "label": "Date/Time of Last Study Treatment",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFICDTC",
+      "label": "Date/Time of Informed Consent",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RFPENDTC",
+      "label": "Date/Time of End of Participation",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "DTHDTC",
+      "label": "Date/Time of Death",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "DTHFL",
+      "label": "Subject Death Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "AGEU",
+      "label": "Age Units",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "ETHNIC",
+      "label": "Ethnicity",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "ARMCD",
+      "label": "Planned Arm Code",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "ARM",
+      "label": "Description of Planned Arm",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "ACTARMCD",
+      "label": "Actual Arm Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "ACTARM",
+      "label": "Description of Actual Arm",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "COUNTRY",
+      "label": "Country",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "DMDTC",
+      "label": "Date/Time of Collection",
+      "data_type": "date",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DM",
+      "variable": "DMDY",
+      "label": "Study Day of Collection",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "SESEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "ETCD",
+      "label": "Element Code",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "ELEMENT",
+      "label": "Description of Element",
+      "data_type": "text",
+      "origin": "Protocol"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "SESTDTC",
+      "label": "Start Date/Time of Element",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "SEENDTC",
+      "label": "End Date/Time of Element",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SE",
+      "variable": "SEUPDES",
+      "label": "Description of Unplanned Element",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Pages 7, 22, 25, 32, 36, 42, 49, 52, 58, 67, 73, 82, 88, 90, 99, 108, 116, 121, 122, 123, 123, 125, 126, 128"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Pages 7, 22, 25, 32, 36, 42, 49, 52, 58, 67, 73, 82, 88, 90, 99, 108, 116, 121, 122, 123, 123, 125, 126, 128"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "SVSTDTC",
+      "label": "Start Date/Time of Visit",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SV",
+      "variable": "SVENDTC",
+      "label": "End Date/Time of Visit",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMSPID",
+      "label": "Sponsor-Defined Identifier",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMTRT",
+      "label": "Reported Name of Drug, Med, or Therapy",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMDECOD",
+      "label": "Standardized Medication Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMINDC",
+      "label": "Indication",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMCLAS",
+      "label": "Medication Class",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMDOSE",
+      "label": "Dose per Administration",
+      "data_type": "integer",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMDOSU",
+      "label": "Dose Units",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMDOSFRQ",
+      "label": "Dosing Frequency per Interval",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMROUTE",
+      "label": "Route of Administration",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMDTC",
+      "label": "Date/Time of Collection",
+      "data_type": "date",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMSTDTC",
+      "label": "Start Date/Time of Medication",
+      "data_type": "date",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMENDTC",
+      "label": "End Date/Time of Medication",
+      "data_type": "date",
+      "origin": "CRF Page 124, 125, 126"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMSTDY",
+      "label": "Study Day of Start of Medication",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "CM",
+      "variable": "CMENDY",
+      "label": "Study Day of End of Medication",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXTRT",
+      "label": "Name of Actual Treatment",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXDOSE",
+      "label": "Dose per Administration",
+      "data_type": "integer",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXDOSU",
+      "label": "Dose Units",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXDOSFRM",
+      "label": "Dose Form",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXDOSFRQ",
+      "label": "Dosing Frequency per Interval",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXROUTE",
+      "label": "Route of Administration",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Pages 25, 36, 42, 49, 52, 58, 67, 73, 82, 90, 99, 108, 116, 128"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Pages 25, 36, 42, 49, 52, 58, 67, 73, 82, 90, 99, 108, 116, 128"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXSTDTC",
+      "label": "Start Date/Time of Treatment",
+      "data_type": "date",
+      "origin": "CRF Pages 25, 36, 42, 49, 52, 58, 67, 73, 82, 90, 99, 108, 116, 128"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXENDTC",
+      "label": "End Date/Time of Treatment",
+      "data_type": "date",
+      "origin": "CRF Page 105, 138"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXSTDY",
+      "label": "Study Day of Start of Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "EX",
+      "variable": "EXENDY",
+      "label": "Study Day of End of Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESPID",
+      "label": "Sponsor-Defined Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AETERM",
+      "label": "Reported Term for the Adverse Event",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AELLT",
+      "label": "Lowest Level Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AELLTCD",
+      "label": "Lowest Level Term Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEDECOD",
+      "label": "Dictionary-Derived Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEPTCD",
+      "label": "Preferred Term Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEHLT",
+      "label": "High Level Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEHLTCD",
+      "label": "High Level Term Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEHLGT",
+      "label": "High Level Group Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEHLGTCD",
+      "label": "High Level Group Term Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEBODSYS",
+      "label": "Body System or Organ Class",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEBDSYCD",
+      "label": "Body System or Organ Class Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESOC",
+      "label": "Primary System Organ Class",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESOCCD",
+      "label": "Primary System Organ Class Code",
+      "data_type": "integer",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESEV",
+      "label": "Severity/Intensity",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESER",
+      "label": "Serious Event",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEACN",
+      "label": "Action Taken with Study Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEREL",
+      "label": "Causality",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEOUT",
+      "label": "Outcome of Adverse Event",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESCAN",
+      "label": "Involves Cancer",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESCONG",
+      "label": "Congenital Anomaly or Birth Defect",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESDISAB",
+      "label": "Persist or Signif Disability/Incapacity",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESDTH",
+      "label": "Results in Death",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESHOSP",
+      "label": "Requires or Prolongs Hospitalization",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESLIFE",
+      "label": "Is Life Threatening",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESOD",
+      "label": "Occurred with Overdose",
+      "data_type": "text",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEDTC",
+      "label": "Date/Time of Collection",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESTDTC",
+      "label": "Start Date/Time of Adverse Event",
+      "data_type": "date",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEENDTC",
+      "label": "End Date/Time of Adverse Event",
+      "data_type": "date",
+      "origin": "CRF Page 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AESTDY",
+      "label": "Study Day of Start of Adverse Event",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "AE",
+      "variable": "AEENDY",
+      "label": "Study Day of End of Adverse Event",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSSPID",
+      "label": "Sponsor-Defined Identifier",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSTERM",
+      "label": "Reported Term for the Disposition Event",
+      "data_type": "text",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSDECOD",
+      "label": "Standardized Disposition Term",
+      "data_type": "text",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSCAT",
+      "label": "Category for Disposition Event",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSDTC",
+      "label": "Date/Time of Collection",
+      "data_type": "datetime",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSSTDTC",
+      "label": "Start Date/Time of Disposition Event",
+      "data_type": "date",
+      "origin": "CRF Page 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "DS",
+      "variable": "DSSTDY",
+      "label": "Study Day of Start of Disposition Event",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHSPID",
+      "label": "Sponsor-Defined Identifier",
+      "data_type": "text",
+      "origin": "CRF Pages 14, 15, 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHTERM",
+      "label": "Reported Term for the Medical History",
+      "data_type": "text",
+      "origin": "CRF Pages 14, 15, 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHLLT",
+      "label": "Lowest Level Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHDECOD",
+      "label": "Dictionary-Derived Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHHLT",
+      "label": "High Level Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHHLGT",
+      "label": "High Level Group Term",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHCAT",
+      "label": "Category for Medical History",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHBODSYS",
+      "label": "Body System or Organ Class",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHSEV",
+      "label": "Severity/Intensity",
+      "data_type": "text",
+      "origin": "CRF Pages 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Pages 14, 15, 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Pages 14, 15, 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHDTC",
+      "label": "Date/Time of History Collection",
+      "data_type": "date",
+      "origin": "CRF Pages 14, 15, 121, 122, 123"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHSTDTC",
+      "label": "Start Date/Time of Medical History Event",
+      "data_type": "date",
+      "origin": "CRF Pages 12, 14"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "MH",
+      "variable": "MHDY",
+      "label": "Study Day of History Collection",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBTESTCD",
+      "label": "Lab Test or Examination Short Name",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBTEST",
+      "label": "Lab Test or Examination Name",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBCAT",
+      "label": "Category for Lab Test",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBORRES",
+      "label": "Result or Finding in Original Units",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBORRESU",
+      "label": "Original Units",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBORNRLO",
+      "label": "Reference Range Lower Limit in Orig Unit",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBORNRHI",
+      "label": "Reference Range Upper Limit in Orig Unit",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSTRESC",
+      "label": "Character Result/Finding in Std Format",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSTRESN",
+      "label": "Numeric Result/Finding in Standard Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSTRESU",
+      "label": "Standard Units",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSTNRLO",
+      "label": "Reference Range Lower Limit-Std Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBSTNRHI",
+      "label": "Reference Range Upper Limit-Std Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBNRIND",
+      "label": "Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBBLFL",
+      "label": "Baseline Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBDTC",
+      "label": "Date/Time of Specimen Collection",
+      "data_type": "datetime",
+      "origin": "eDT"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "LB",
+      "variable": "LBDY",
+      "label": "Study Day of Specimen Collection",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSTESTCD",
+      "label": "Question Short Name",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSTEST",
+      "label": "Question Name",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSCAT",
+      "label": "Category of Question",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSSCAT",
+      "label": "Subcategory for Question",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSORRES",
+      "label": "Finding in Original Units",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSORRESU",
+      "label": "Original Units",
+      "data_type": "text",
+      "origin": "CRF Pages 26, 59, 74, 91, 109, 130"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSSTRESC",
+      "label": "Character Result/Finding in Std Format",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSSTRESN",
+      "label": "Numeric Finding in Standard Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSSTRESU",
+      "label": "Standard Units",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSBLFL",
+      "label": "Baseline Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSDRVFL",
+      "label": "Derived Flag",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Pages 10, 11, 26, 27, 28, 29, 38, 44, 54, 59, 60, 61, 62, 63, 69, 74, 75, 76, 77, 78, 84, 89, 91, 92, 93, 94, 95, 101, 109, 110, 111, 112, 113, 130, 131, 132, 133, 134, 156, 157"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSDTC",
+      "label": "Date/Time of Finding",
+      "data_type": "date",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "QS",
+      "variable": "QSDY",
+      "label": "Study Day of Finding",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCTESTCD",
+      "label": "Subject Characteristic Short Name",
+      "data_type": "text",
+      "origin": "CRF Page 8"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCTEST",
+      "label": "Subject Characteristic",
+      "data_type": "text",
+      "origin": "CRF Page 8"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCCAT",
+      "label": "Category for Subject Characteristic",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCORRES",
+      "label": "Result or Finding in Original Units",
+      "data_type": "text",
+      "origin": "CRF Page 8"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCORRESU",
+      "label": "Original Units",
+      "data_type": "text",
+      "origin": "CRF Page 8"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCSTRESC",
+      "label": "Character Result/Finding in Std Format",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCSTRESN",
+      "label": "Numeric Result/Finding in Standard Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCSTRESU",
+      "label": "Standard Units",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCDTC",
+      "label": "Date/Time of Collection",
+      "data_type": "date",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SC",
+      "variable": "SCDY",
+      "label": "Study Day of Examination",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSTESTCD",
+      "label": "Vital Signs Test Short Name",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSTEST",
+      "label": "Vital Signs Test Name",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSPOS",
+      "label": "Vital Signs Position of Subject",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSORRES",
+      "label": "Result or Finding in Original Units",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSORRESU",
+      "label": "Original Units",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSSTRESC",
+      "label": "Character Result/Finding in Std Format",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSSTRESN",
+      "label": "Numeric Result/Finding in Standard Units",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSSTRESU",
+      "label": "Standard Units",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSSTAT",
+      "label": "Completion Status",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSLOC",
+      "label": "Location of Vital Signs Measurement",
+      "data_type": "text",
+      "origin": "CRF Pages 17, 23, 30, 33, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSBLFL",
+      "label": "Baseline Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VISITDY",
+      "label": "Planned Study Day of Visit",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSDTC",
+      "label": "Date/Time of Measurements",
+      "data_type": "date",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSDY",
+      "label": "Study Day of Vital Signs",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSTPT",
+      "label": "Planned Time Point Name",
+      "data_type": "text",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSTPTNUM",
+      "label": "Planned Time Point Number",
+      "data_type": "integer",
+      "origin": "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSELTM",
+      "label": "Planned Elapsed Time from Time Point Ref",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "VS",
+      "variable": "VSTPTREF",
+      "label": "Time Point Reference",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "RDOMAIN",
+      "label": "Related Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "IDVAR",
+      "label": "Identifying Variable",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "IDVARVAL",
+      "label": "Identifying Variable Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "RELTYPE",
+      "label": "Relationship Type",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "RELREC",
+      "variable": "RELID",
+      "label": "Relationship Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "RDOMAIN",
+      "label": "Related Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "IDVAR",
+      "label": "Identifying Variable",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "IDVARVAL",
+      "label": "Identifying Variable Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "QNAM",
+      "label": "Qualifier Variable Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "QLABEL",
+      "label": "Qualifier Variable Label",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "QVAL",
+      "label": "Data Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "QORIG",
+      "label": "Origin",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPAE",
+      "variable": "QEVAL",
+      "label": "Evaluator",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "RDOMAIN",
+      "label": "Related Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "IDVAR",
+      "label": "Identifying Variable",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "IDVARVAL",
+      "label": "Identifying Variable Value",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "QNAM",
+      "label": "Qualifier Variable Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "QLABEL",
+      "label": "Qualifier Variable Label",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "QVAL",
+      "label": "Data Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "QORIG",
+      "label": "Origin",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDM",
+      "variable": "QEVAL",
+      "label": "Evaluator",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "RDOMAIN",
+      "label": "Related Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "IDVAR",
+      "label": "Identifying Variable",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "IDVARVAL",
+      "label": "Identifying Variable Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "QNAM",
+      "label": "Qualifier Variable Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "QLABEL",
+      "label": "Qualifier Variable Label",
+      "data_type": "text",
+      "origin": "CRF Pages 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "QVAL",
+      "label": "Data Value",
+      "data_type": "text",
+      "origin": "CRF Pages 106, 139"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "QORIG",
+      "label": "Origin",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPDS",
+      "variable": "QEVAL",
+      "label": "Evaluator",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "CRF Page 7"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "RDOMAIN",
+      "label": "Related Domain Abbreviation",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "IDVAR",
+      "label": "Identifying Variable",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "IDVARVAL",
+      "label": "Identifying Variable Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "QNAM",
+      "label": "Qualifier Variable Name",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "QLABEL",
+      "label": "Qualifier Variable Label",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "QVAL",
+      "label": "Data Value",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "QORIG",
+      "label": "Origin",
+      "data_type": "text",
+      "origin": "Assigned"
+    },
+    {
+      "standard": "sdtm",
+      "product": "define:sdtm",
+      "version": "study",
+      "dataset": "SUPPLB",
+      "variable": "QEVAL",
+      "label": "Evaluator",
+      "data_type": "text",
+      "origin": "Assigned"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+---
+title: "traceR: objective-to-result traceability for CDISC studies"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{traceR: objective-to-result traceability for CDISC studies}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(traceR)
+```
+
+## Why traceR
+
+CDISC standards describe a study end to end — the *objective* (USDM), the
+*analysis plan* (ARS), the *data* (SDTM, ADaM) and the *results* (ARD) — but the
+lineage that connects them lives in separate documents and separate heads.
+traceR reads that metadata and assembles a single **traceability graph**: a
+typed set of nodes and edges that lets you walk from an objective all the way
+down to the SDTM variable that fed a result, and back. Because the graph is
+built deterministically from metadata and content-hashed, an AI-assisted
+pipeline built on top of it becomes **reproducible by construction**.
+
+## Build a trace graph
+
+The package ships the CDISC pilot metadata as example files. `build_trace()`
+reads the USDM study definition, the ARS Reporting Event and the define.xml
+files, merges them, and wires the cross-source edges (the endpoint→output
+bridge, and ADaM→SDTM `derived_from` lineage).
+
+```{r}
+g <- build_trace(
+  usdm   = traceR_example("usdm_trace.json"),
+  ars    = traceR_example("reporting_event.json"),
+  define = list(adam = traceR_example("define_adam.xml"),
+                sdtm = traceR_example("define_sdtm.xml"))
+)
+g
+```
+
+A prebuilt copy is also bundled as `cdiscpilot01_trace`.
+
+## Query the lineage
+
+Trace from an objective to a specific output:
+
+```{r}
+trace_path(g, "Objective_2", "Out14-3-1-1")[, c("type", "label", "via")]
+```
+
+Follow a single relationship — here the predecessor chain of an ADaM variable
+back into SDTM:
+
+```{r}
+trace_descendants(g, "adam_var:ADAE.TRTAN", rel = "derived_from")[, c("type", "label")]
+```
+
+## Validate coverage and find gaps
+
+`trace_coverage()` reports, per objective, how much of the lineage is realised;
+`trace_gaps()` lists the structural holes (endpoints with no output, analyses
+not yet executed, variables not defined in define.xml, …).
+
+```{r}
+trace_coverage(g)[, c("label", "n_outputs", "n_analyses", "reaches_result")]
+head(trace_gaps(g), 5)
+```
+
+## Execute standard analyses into an ARD
+
+traceR can also *execute* the standard summary analyses straight from the
+graph's bindings, emitting the long-skinny ARD keyed to the ARS
+`analysis_id`/`operation_id`.
+
+```{r, eval = requireNamespace("cards", quietly = TRUE)}
+ex <- execute_reporting_event(g, dirname(traceR_example("adsl.csv")))
+head(ex$ard)
+```
+
+Merge the ARD back in and the objective now reaches a result:
+
+```{r, eval = requireNamespace("cards", quietly = TRUE)}
+g2 <- build_trace(
+  usdm = traceR_example("usdm_trace.json"),
+  ars  = traceR_example("reporting_event.json"),
+  ard  = ex$ard
+)
+trace_coverage(g2)[, c("label", "n_results", "reaches_result")]
+```
+
+## Reproducibility: manifest and verify
+
+`trace_manifest()` writes a content-hashed record of the inputs and the graph;
+`trace_verify()` confirms a graph still matches it.
+
+```{r}
+man <- trace_manifest(g)
+trace_verify(g, man)$reproducible
+```
+
+## Export the traceable artifact
+
+`trace_to_json()` emits a portable graph document, and `trace_to_html()`
+renders an interactive objective→result explorer (requires visNetwork):
+
+```{r, eval = FALSE}
+trace_to_html(g, "traceability.html")
+```
+
+## Standards metadata (CDISC Library)
+
+With a CDISC Library member API key, `cdisc_snapshot("sdtmig", "3-4")` downloads
+the exhaustive published variable catalogue and caches a versioned snapshot for
+reproducibility. Offline, `snapshot_from_define()` derives the same schema from
+a study's define.xml. Either snapshot feeds `annotate_standard()`, which flags
+each study variable as standard or custom.
+```

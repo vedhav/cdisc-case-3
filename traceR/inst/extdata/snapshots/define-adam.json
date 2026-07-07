@@ -1,0 +1,4159 @@
+{
+  "product": "define:adam",
+  "version": "study",
+  "retrieved": "2026-07-07 17:21:14.352039",
+  "sha": "a9c9299abc728f458bf996a1abadd636",
+  "n_variables": 415,
+  "variables": [
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "SUBJID",
+      "label": "Subject Identifier for the Study",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "SITEGR1",
+      "label": "Pooled Site Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "ARM",
+      "label": "Description of Planned Arm",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRT01P",
+      "label": "Planned Treatment for Period 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRT01PN",
+      "label": "Planned Treatment for Period 01 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRT01A",
+      "label": "Actual Treatment for Period 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRT01AN",
+      "label": "Actual Treatment for Period 01 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "TRTDUR",
+      "label": "Duration of Treatment (days)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "AVGDD",
+      "label": "Avg Daily Dose (as planned)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "CUMDOSE",
+      "label": "Cumulative Dose (as planned)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "AGEU",
+      "label": "Age Units",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "ETHNIC",
+      "label": "Ethnicity",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "ITTFL",
+      "label": "Intent-To-Treat Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "EFFFL",
+      "label": "Efficacy Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "COMP8FL",
+      "label": "Completers of Week 8 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "COMP16FL",
+      "label": "Completers of Week 16 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DISCONFL",
+      "label": "Did the Subject Discontinue the Study?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DSRAEFL",
+      "label": "Discontinued due to AE?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DTHFL",
+      "label": "Subject Died?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "BMIBL",
+      "label": "Baseline BMI (kg/m^2)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "BMIBLGR1",
+      "label": "Pooled Baseline BMI Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "HEIGHTBL",
+      "label": "Baseline Height (cm)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "WEIGHTBL",
+      "label": "Baseline Weight (kg)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "EDUCLVL",
+      "label": "Years of Education",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DISONSDT",
+      "label": "Date of Onset of Disease",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DURDIS",
+      "label": "Duration of Disease (Months)",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DURDSGR1",
+      "label": "Pooled Disease Duration Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "VISIT1DT",
+      "label": "Date of Visit 1",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "RFSTDTC",
+      "label": "Subject Reference Start Date/Time",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "RFENDTC",
+      "label": "Subject Reference End Date/Time",
+      "data_type": "datetime",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "VISNUMEN",
+      "label": "End of Trt Visit (Vis 12 or Early Term.)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "RFENDT",
+      "label": "Date of Discontinuation/Completion",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DCDECOD",
+      "label": "Standardized Disposition Term",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "DCREASCD",
+      "label": "Reason for Discontinuation",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADSL",
+      "variable": "MMSETOT",
+      "label": "MMSE Total",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "ASTDT",
+      "label": "Analysis Start Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "ASTDTF",
+      "label": "Analysis Start Date Imputation Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "ASTDY",
+      "label": "Analysis Start Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AENDT",
+      "label": "Analysis End Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AENDY",
+      "label": "Analysis End Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "ADURN",
+      "label": "AE Duration (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "ADURU",
+      "label": "AE Duration Units",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AETERM",
+      "label": "Reported Term for the Adverse Event",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AELLT",
+      "label": "Lowest Level Term",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AELLTCD",
+      "label": "Lowest Level Term Code",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEDECOD",
+      "label": "Dictionary-Derived Term",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEPTCD",
+      "label": "Preferred Term Code",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEHLT",
+      "label": "High Level Term",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEHLTCD",
+      "label": "High Level Term Code",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEHLGT",
+      "label": "High Level Group Term",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEHLGTCD",
+      "label": "High Level Group Term Code",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEBODSYS",
+      "label": "Body System or Organ Class",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESOC",
+      "label": "Primary System Organ Class",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESOCCD",
+      "label": "Primary System Organ Class Code",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESEV",
+      "label": "Severity/Intensity",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESER",
+      "label": "Serious Event",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESCAN",
+      "label": "Involves Cancer",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESCONG",
+      "label": "Congenital Anomaly or Birth Defect",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESDISAB",
+      "label": "Persist or Signif Disability/Incapacity",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESDTH",
+      "label": "Results in Death",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESHOSP",
+      "label": "Requires or Prolongs Hospitalization",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESLIFE",
+      "label": "Is Life Threatening",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESOD",
+      "label": "Occurred with Overdose",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEREL",
+      "label": "Causality",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEACN",
+      "label": "Action Taken with Study Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AEOUT",
+      "label": "Outcome of Adverse Event",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AESEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "TRTEMFL",
+      "label": "Treatment Emergent Analysis Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCCFL",
+      "label": "1st Occurrence of Any AE Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCCSFL",
+      "label": "1st Occurrence of SOC Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCCPFL",
+      "label": "1st Occurrence of Preferred Term Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCC02FL",
+      "label": "1st Occurrence 02 Flag for Serious",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCC03FL",
+      "label": "1st Occurrence 03 Flag for Serious SOC",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCC04FL",
+      "label": "1st Occurrence 04 Flag for Serious PT",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "CQ01NAM",
+      "label": "Customized Query 01 Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADAE",
+      "variable": "AOCC01FL",
+      "label": "1st Occurrence 01 Flag for CQ01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "SUBJID",
+      "label": "Subject Identifier for the Study",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "DSRAEFL",
+      "label": "Discontinued due to AE?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "PARCAT1",
+      "label": "Parameter Category 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "CHG",
+      "label": "Change from Baseline",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "A1LO",
+      "label": "Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "A1HI",
+      "label": "Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "R2A1LO",
+      "label": "Ratio to Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "R2A1HI",
+      "label": "Ratio to Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "BR2A1LO",
+      "label": "Base Ratio to Analysis Range 1 Lower Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "BR2A1HI",
+      "label": "Base Ratio to Analysis Range 1 Upper Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ALBTRVAL",
+      "label": "Amount Threshold Range",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ANRIND",
+      "label": "Analysis Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "BNRIND",
+      "label": "Baseline Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "ABLFL",
+      "label": "Baseline Record Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "AENTMTFL",
+      "label": "Last value in treatment visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "LBSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "LBNRIND",
+      "label": "Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBC",
+      "variable": "LBSTRESN",
+      "label": "Numeric Result/Finding in Standard Units",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "SUBJID",
+      "label": "Subject Identifier for the Study",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "DSRAEFL",
+      "label": "Discontinued due to AE?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "PARCAT1",
+      "label": "Parameter Category 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "CHG",
+      "label": "Change from Baseline",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "A1LO",
+      "label": "Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "A1HI",
+      "label": "Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "R2A1LO",
+      "label": "Ratio to Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "R2A1HI",
+      "label": "Ratio to Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "BR2A1LO",
+      "label": "Base Ratio to Analysis Range 1 Lower Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "BR2A1HI",
+      "label": "Base Ratio to Analysis Range 1 Upper Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ALBTRVAL",
+      "label": "Amount Threshold Range",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ANRIND",
+      "label": "Analysis Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "BNRIND",
+      "label": "Baseline Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "ABLFL",
+      "label": "Baseline Record Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "AENTMTFL",
+      "label": "Last value in treatment visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "LBSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "LBNRIND",
+      "label": "Reference Range Indicator",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBH",
+      "variable": "LBSTRESN",
+      "label": "Numeric Result/Finding in Standard Units",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "SUBJID",
+      "label": "Subject Identifier for the Study",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "DSRAEFL",
+      "label": "Discontinued due to AE?",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "PARAMTYP",
+      "label": "Parameter Type",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "PARCAT1",
+      "label": "Parameter Category 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "A1LO",
+      "label": "Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "A1HI",
+      "label": "Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "R2A1LO",
+      "label": "Ratio to Analysis Range 1 Lower Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "R2A1HI",
+      "label": "Ratio to Analysis Range 1 Upper Limit",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "BR2A1LO",
+      "label": "Base Ratio to Analysis Range 1 Lower Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "BR2A1HI",
+      "label": "Base Ratio to Analysis Range 1 Upper Lim",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "ABLFL",
+      "label": "Baseline Record Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "SHIFT1",
+      "label": "Shift 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "SHIFT1N",
+      "label": "Shift 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "CRIT1",
+      "label": "Analysis Criterion 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "CRIT1FL",
+      "label": "Criterion 1 Evaluation Result Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADLBHY",
+      "variable": "CRIT1FN",
+      "label": "Criterion 1 Evaluation Result Flag (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "SITEGR1",
+      "label": "Pooled Site Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "ITTFL",
+      "label": "Intent-to-Treat Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "EFFFL",
+      "label": "Efficacy Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "CHG",
+      "label": "Baseline Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "PCHG",
+      "label": "Percent Change from Baseline",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "ABLFL",
+      "label": "ABLFL",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "DTYPE",
+      "label": "Derivation Type",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWRANGE",
+      "label": "Analysis Window Valid Relative Range",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWTARGET",
+      "label": "Analysis Window Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWTDIFF",
+      "label": "Analysis Window Diff from Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWLO",
+      "label": "Analysis Window Beginning Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWHI",
+      "label": "Analysis Window Ending Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "AWU",
+      "label": "Analysis Window Unit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSADAS",
+      "variable": "QSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "SITEGR1",
+      "label": "Pooled Site Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "ITTFL",
+      "label": "Intent-to-Treat Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "EFFFL",
+      "label": "Efficacy Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "DTYPE",
+      "label": "Derivation Type",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWRANGE",
+      "label": "Analysis Window Valid Relative Range",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWTARGET",
+      "label": "Analysis Window Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWTDIFF",
+      "label": "Analysis Window Diff from Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWLO",
+      "label": "Analysis Window Beginning Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWHI",
+      "label": "Analysis Window Ending Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "AWU",
+      "label": "Analysis Window Unit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSCIBC",
+      "variable": "QSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "SITEGR1",
+      "label": "Pooled Site Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "ITTFL",
+      "label": "Intent-to-Treat Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "EFFFL",
+      "label": "Efficacy Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "COMP24FL",
+      "label": "Completers of Week 24 Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "PARAMN",
+      "label": "Parameter (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "PARAMTYP",
+      "label": "Parameter Type",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "CHG",
+      "label": "Change from Baseline",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "PCHG",
+      "label": "Percent Change from Baseline",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "ABLFL",
+      "label": "Analysis Baseline Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "DTYPE",
+      "label": "Derivation Type",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWRANGE",
+      "label": "Analysis Window Valid Relative Range",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWTARGET",
+      "label": "Analysis Window Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWTDIFF",
+      "label": "Analysis Window Diff from Target",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWLO",
+      "label": "Analysis Window Beginning Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWHI",
+      "label": "Analysis Window Ending Timepoint",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "AWU",
+      "label": "Analysis Window Unit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADQSNPIX",
+      "variable": "QSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTDUR",
+      "label": "Duration of treatment (days)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "PARAM",
+      "label": "Parameter Description",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "STARTDT",
+      "label": "Time to Event Origin Date for Subject",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "CNSR",
+      "label": "Censor",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "EVNTDESC",
+      "label": "Event or Censoring Description",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SRCDOM",
+      "label": "Source Domain",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SRCVAR",
+      "label": "Source Variable",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SRCSEQ",
+      "label": "Source Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADTTE",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "STUDYID",
+      "label": "Study Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "SITEID",
+      "label": "Study Site Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AGE",
+      "label": "Age",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AGEGR1",
+      "label": "Pooled Age Group 1",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AGEGR1N",
+      "label": "Pooled Age Group 1 (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "RACE",
+      "label": "Race",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "RACEN",
+      "label": "Race (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "SEX",
+      "label": "Sex",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "SAFFL",
+      "label": "Safety Population Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTSDT",
+      "label": "Date of First Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTEDT",
+      "label": "Date of Last Exposure to Treatment",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTP",
+      "label": "Planned Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTPN",
+      "label": "Planned Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTA",
+      "label": "Actual Treatment",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "TRTAN",
+      "label": "Actual Treatment (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "PARAMCD",
+      "label": "Parameter Code",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "PARAM",
+      "label": "Parameter",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "PARAMN",
+      "label": "Parameter Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ADT",
+      "label": "Analysis Date",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ADY",
+      "label": "Analysis Relative Day",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ATPTN",
+      "label": "Analysis Timepoint (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ATPT",
+      "label": "Analysis Timepoint",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AVISIT",
+      "label": "Analysis Visit",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AVISITN",
+      "label": "Analysis Visit (N)",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "AVAL",
+      "label": "Analysis Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "BASE",
+      "label": "Baseline Value",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "CHG",
+      "label": "Change from Baseline",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "PCHG",
+      "label": "Percent Change from Baseline",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "VISITNUM",
+      "label": "Visit Number",
+      "data_type": "float",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "VISIT",
+      "label": "Visit Name",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "VSSEQ",
+      "label": "Sequence Number",
+      "data_type": "integer",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ANL01FL",
+      "label": "Analysis Record Flag 01",
+      "data_type": "text",
+      "origin": "Derived"
+    },
+    {
+      "standard": "adam",
+      "product": "define:adam",
+      "version": "study",
+      "dataset": "ADVS",
+      "variable": "ABLFL",
+      "label": "Baseline Record Flag",
+      "data_type": "text",
+      "origin": "Derived"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "study": "CDISCPILOT01",
+  "source": "CDISC Pilot USDM (DDF-RA Examples/CDISC_Pilot)",
+  "objectives": [
+    {
+      "id": "Objective_1",
+      "level": "Primary Objective",
+      "text": "To determine if there is a statistically significant relationship (overall Type 1 erroralpha=0.05) between the change in both the ADAS-Cog (11) and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg]).",
+      "endpoints": [
+        {
+          "id": "Endpoint_1",
+          "level": "Primary Endpoint",
+          "text": "Alzheimer's Disease Assessment Scale - Cognitive Subscale, total of 11 items [ADAS-Cog (11)] at Week 24"
+        },
+        {
+          "id": "Endpoint_2",
+          "level": "Primary Endpoint",
+          "text": "Video-referenced Clinician’s Interview-based Impression of Change (CIBIC+) at Week 24"
+        }
+      ]
+    },
+    {
+      "id": "Objective_2",
+      "level": "Primary Objective",
+      "text": "To document the safety profile of the xanomeline TTS.",
+      "endpoints": [
+        {
+          "id": "Endpoint_3",
+          "level": "Primary Endpoint",
+          "text": "Adverse events"
+        },
+        {
+          "id": "Endpoint_4",
+          "level": "Primary Endpoint",
+          "text": "Vital signs (weight, standing and supine blood pressure, heart rate)"
+        },
+        {
+          "id": "Endpoint_5",
+          "level": "Primary Endpoint",
+          "text": "Laboratory evaluations (Change from Baseline)"
+        }
+      ]
+    },
+    {
+      "id": "Objective_3",
+      "level": "Secondary Objective",
+      "text": "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these\nareas.",
+      "endpoints": [
+        {
+          "id": "Endpoint_6",
+          "level": "Secondary Endpoint",
+          "text": "Alzheimer's Disease Assessment Scale - Cognitive Subscale, total of 11 items [ADAS-Cog (11)] at Weeks 8 and 16"
+        },
+        {
+          "id": "Endpoint_7",
+          "level": "Secondary Endpoint",
+          "text": "Video-referenced Clinician’s Interview-based Impression of Change (CIBIC+) at Weeks 8 and 16"
+        },
+        {
+          "id": "Endpoint_8",
+          "level": "Secondary Endpoint",
+          "text": "Mean Revised Neuropsychiatric Inventory (NPI-X) from Week 4 to Week 24"
+        }
+      ]
+    },
+    {
+      "id": "Objective_4",
+      "level": "Secondary Objective",
+      "text": "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas (see Attachment LZZT.5).",
+      "endpoints": [
+        {
+          "id": "Endpoint_9",
+          "level": "Secondary Endpoint",
+          "text": "*** To be determined from protocol ***"
+        }
+      ]
+    },
+    {
+      "id": "Objective_5",
+      "level": "Secondary Objective",
+      "text": "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The Alzheimer's Disease Assessment Scale-14 item Cognitive Subscale, hereafter referred to as ADAS-Cog (14), will be used for this assessment (see Attachment LZZT.2).",
+      "endpoints": [
+        {
+          "id": "Endpoint_10",
+          "level": "Secondary Endpoint",
+          "text": "*** To be determined from protocol ***"
+        }
+      ]
+    },
+    {
+      "id": "Objective_6",
+      "level": "Secondary Objective",
+      "text": "To assess the treatment response as a function of Apo E genotype.",
+      "endpoints": [
+        {
+          "id": "Endpoint_11",
+          "level": "Secondary Endpoint",
+          "text": "*** To be determined from protocol ***"
+        }
+      ]
+    }
+  ],
+  "endpointOutputMap": {
+    "Endpoint_1": [
+      "Out14-3-01"
+    ],
+    "Endpoint_3": [
+      "Out14-3-1-1",
+      "Out14-3-2-1",
+      "Out14-KM-01"
+    ],
+    "Endpoint_4": [
+      "Out14-3-3-1a",
+      "Out14-3-3-1b"
+    ]
+  },
+  "populationContext": {
+    "Endpoint_3": "Out14-1-1"
+  }
+}
