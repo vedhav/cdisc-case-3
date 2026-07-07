@@ -133,13 +133,68 @@ recipe_summary_by_group <- function(data, output_id, analysis_id,
   list(long = long, gt = as_gt(tbl), ard = ard)
 }
 
+# --- Recipe: count of subjects per group (population header, e.g. An01_05) ---
+# data_pop: the analysis population (one row per subject, or de-duplicated on
+# USUBJID). Emits one `n` row per group. op_n: the ARS operationId for the count.
+recipe_count_subjects <- function(data_pop, output_id, analysis_id,
+                                   group_var = "TRT01A", op_n = NA_character_,
+                                   id_var = "USUBJID") {
+  ids <- if (id_var %in% names(data_pop)) {
+    data_pop %>% distinct(.data[[id_var]], .data[[group_var]])
+  } else data_pop
+  counts <- ids %>% count(.data[[group_var]], name = "n")
+  long <- data.frame(
+    output_id = output_id, analysis_id = analysis_id, operation_id = op_n,
+    group_var = group_var, group_level = as.character(counts[[group_var]]),
+    variable = id_var, variable_level = NA_character_,
+    stat_name = "n", stat_label = "N", stat_raw = as.character(counts$n),
+    stat_fmt = as.character(counts$n), stringsAsFactors = FALSE)
+  long[, ard_long_schema()]
+}
+
+# --- Recipe: subjects with >=1 event of interest, % over ADSL N --------------
+# events: ADAE already restricted to the population AND the event subset (the
+# executor applies the dataSubset filters). adsl_pop: population denominator.
+# Emits n + p per group for a single "any event" indicator (the output variable
+# is the event category, labelled by the analysis).
+recipe_ae_overall <- function(events, adsl_pop, output_id, analysis_id,
+                              group_var = "TRT01A", label = "Subjects with event",
+                              operation_map = character(), id_var = "USUBJID") {
+  big_n <- adsl_pop %>% distinct(.data[[id_var]], .data[[group_var]]) %>%
+    count(.data[[group_var]], name = "N_arm")
+  subj <- events %>% distinct(.data[[id_var]], .data[[group_var]]) %>%
+    count(.data[[group_var]], name = "n")
+  d <- big_n %>% left_join(subj, by = group_var) %>%
+    mutate(n = ifelse(is.na(n), 0L, n), pct = ifelse(N_arm > 0, n / N_arm * 100, NA_real_))
+  op_n <- unname(operation_map["n"]); op_p <- unname(operation_map["p"])
+  bind_rows(
+    data.frame(output_id = output_id, analysis_id = analysis_id, operation_id = op_n %||% NA_character_,
+               group_var = group_var, group_level = as.character(d[[group_var]]),
+               variable = label, variable_level = NA_character_,
+               stat_name = "n", stat_label = "n", stat_raw = as.character(d$n),
+               stat_fmt = as.character(d$n), stringsAsFactors = FALSE),
+    data.frame(output_id = output_id, analysis_id = analysis_id, operation_id = op_p %||% NA_character_,
+               group_var = group_var, group_level = as.character(d[[group_var]]),
+               variable = label, variable_level = NA_character_,
+               stat_name = "p", stat_label = "%", stat_raw = as.character(round(d$pct, 4)),
+               stat_fmt = sprintf("%.1f", d$pct), stringsAsFactors = FALSE)
+  )[, ard_long_schema()]
+}
+
 # --- Recipe: hierarchical AE table (SOC/PT) with ADSL denominator ------------
-# adae: full ADAE. adsl_pop: ADSL filtered to the analysis population (the
-# denominator source). Counts subjects with >=1 event; percentage uses ADSL N.
+# adae: ADAE already restricted to the population AND the TEAE subset by the
+# executor. adsl_pop: ADSL population (denominator source). Counts subjects with
+# >=1 event; percentage uses ADSL N. `level` selects which rows to stamp/return:
+#   "soc"   -> System Organ Class rows, stamped soc_analysis_id
+#   "pt"    -> Preferred Term rows,      stamped pt_analysis_id
+#   "socpt" -> both
 recipe_ae_soc_pt <- function(adae, adsl_pop, output_id, analysis_id,
                              group_var = "TRT01A",
                              soc_var = "AESOC", pt_var = "AEDECOD",
                              teae_flag = "TRTEMFL",
+                             level = "socpt",
+                             soc_analysis_id = analysis_id,
+                             pt_analysis_id = analysis_id,
                              operation_map = character()) {
   unlist_col <- function(x) vapply(x, function(v) if (is.null(v)) NA_character_ else as.character(v)[[1]], character(1))
   big_n <- adsl_pop %>% count(.data[[group_var]], name = "N_arm")
@@ -167,17 +222,18 @@ recipe_ae_soc_pt <- function(adae, adsl_pop, output_id, analysis_id,
     group_modify(~ count_level(.x %>% select(all_of(c("USUBJID", group_var, pt_var))) %>% distinct(), pt_var)) %>%
     ungroup()
 
-  to_long <- function(d, level_name) {
-    if (!nrow(d)) return(NULL)
+  `%||%` <- function(a, b) if (length(a) && !is.na(a)) a else b
+  to_long <- function(d, level_name, aid) {
+    if (is.null(d) || !nrow(d)) return(NULL)
     bind_rows(
-      data.frame(output_id = output_id, analysis_id = analysis_id,
+      data.frame(output_id = output_id, analysis_id = aid,
                  operation_id = unname(operation_map["n"])[1] %||% NA_character_,
                  group_var = group_var, group_level = d$arm,
                  variable = level_name, variable_level = d$level,
                  stat_name = "n", stat_label = "n",
                  stat_raw = as.character(d$n_val), stat_fmt = as.character(d$n_val),
                  stringsAsFactors = FALSE),
-      data.frame(output_id = output_id, analysis_id = analysis_id,
+      data.frame(output_id = output_id, analysis_id = aid,
                  operation_id = unname(operation_map["p"])[1] %||% NA_character_,
                  group_var = group_var, group_level = d$arm,
                  variable = level_name, variable_level = d$level,
@@ -186,8 +242,10 @@ recipe_ae_soc_pt <- function(adae, adsl_pop, output_id, analysis_id,
                  stringsAsFactors = FALSE)
     )
   }
-  `%||%` <- function(a, b) if (length(a) && !is.na(a)) a else b
-  long <- bind_rows(to_long(soc, "AESOC"), to_long(pt %>% rename(soc = 1), "AEDECOD"))
+  parts <- list()
+  if (level %in% c("soc", "socpt")) parts <- c(parts, list(to_long(soc, "AESOC", soc_analysis_id)))
+  if (level %in% c("pt", "socpt"))  parts <- c(parts, list(to_long(pt %>% rename(soc = 1), "AEDECOD", pt_analysis_id)))
+  long <- bind_rows(parts)
   long <- long[, ard_long_schema()]
 
   # A simple gt of the SOC-level counts for the rendered display.

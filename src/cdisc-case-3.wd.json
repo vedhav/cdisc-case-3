@@ -1,7 +1,7 @@
 {
   "name": "Use Case 3: AI-Driven Tables, Figures, and Listings (TFL) Generation",
-  "title": "CDISC Case 3 — ARS Reporting Event + ADaM to traceable TFLs",
-  "description": "Execute a CDISC ARS v1.0 Reporting Event against ADaM datasets to produce Tables, Figures, Listings and Analysis Results Datasets (ARD) with end-to-end objective-to-result traceability. Standard safety outputs run through deterministic validated recipes; the AI drafts programs for the custom efficacy outputs; a human reviews before packaging. Artifacts land in /output.",
+  "title": "CDISC Case 3 - ARS Reporting Event + ADaM to traceable TFLs",
+  "description": "Execute a CDISC ARS v1.0 Reporting Event against ADaM to produce Tables, Figures, Listings and an ARD with end-to-end objective-to-result traceability. The work is decomposed into single-responsibility steps: deterministic binding (bind ARS refs to ADaM headers), deterministic classification + recipe planning, a deterministic recipe run for the standard safety outputs, an AI step scoped ONLY to drafting the custom efficacy programs, a tight human review of just those programs, then deterministic assembly + traceability. Artifacts land in /output.",
   "triggers": [{ "name": "manual", "type": "manual" }],
   "env": {
     "GITHUB_TOKEN": "{{GITHUB_TOKEN}}",
@@ -18,7 +18,7 @@
       "name": "Provide inputs",
       "type": "creation",
       "executor": "human",
-      "description": "Confirm the inputs for this run. By default it executes the bundled CDISCPILOT01 reference (the ARS v1.0 Reporting Event from Case 2 + its ADaM). Note any run context here; leave blank to use the reference.",
+      "description": "Confirm the inputs for this run. By default it executes the bundled CDISCPILOT01 reference (the ARS v1.0 Reporting Event from Case 2 + its ADaM). Leave blank to use the reference.",
       "params": [
         {
           "name": "inputNote",
@@ -46,19 +46,70 @@
       }
     },
     {
-      "id": "generate-tfl",
-      "name": "Generate TFLs from ARS",
+      "id": "bind-validate",
+      "name": "Bind ARS to ADaM",
+      "type": "creation",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic. Walk the ARS analysisSets, dataSubsets, groupings and each Analysis; resolve every dataset.variable / WhereClause against the actual ADaM column headers. Writes /workspace/bindings.json (resolved bindings) and /workspace/unbound.json (any reference that does not resolve - a traceability gap surfaced early, never silently dropped).",
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 10,
+        "command": "python3 /app/container/bind_validate.py --ars /workspace/reporting_event.json --adam /workspace/adam --out /workspace"
+      }
+    },
+    {
+      "id": "classify-outputs",
+      "name": "Classify outputs (standard vs custom)",
+      "type": "decision",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic. For each ARS Output decide standard (a validated recipe covers its shape: demographics, categorical/continuous summary, hierarchical AE by SOC/PT) vs custom (needs a fitted model or bespoke display: ANCOVA, Kaplan-Meier). Classification is a fixed rules table, not a judgement call. Writes /workspace/coverage.json.",
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 5,
+        "command": "python3 /app/container/classify_outputs.py --ars /workspace/reporting_event.json --bindings /workspace/bindings.json --out /workspace"
+      }
+    },
+    {
+      "id": "run-standard",
+      "name": "Run standard outputs (validated recipes)",
+      "type": "creation",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic, no LLM. For every output classified 'standard', call the fixed recipe library (cards/cardx/gtsummary) with ARS-derived bindings, emitting the long-skinny ARD (/workspace/ard/<id>.csv) and the rendered table (/workspace/tfl/<id>.html). 'Almost all safety outputs for free.'",
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 20,
+        "command": "Rscript /app/container/run_standard.R --plan /workspace/standard_plan.json --coverage /workspace/coverage.json --bindings /workspace/bindings.json --adam /workspace/adam --work /workspace"
+      }
+    },
+    {
+      "id": "draft-custom",
+      "name": "Draft custom efficacy programs",
       "type": "creation",
       "executor": "agent",
       "plugin": "claude-code-agent",
-      "description": "AI. Bind the ARS to the ADaM; classify each Output as standard (recipe library covers it) or custom; run recipes / draft + repair programs -> cards/cardx ARD -> render. Writes /workspace/{ard,tfl,code,coverage.json,review.md}.",
+      "description": "AI - scoped ONLY to the custom outputs. For each output classified 'custom' in coverage.json, draft a standalone R program (ANCOVA via lm+emmeans, KM via survival), run it, and repair until it emits the same long-skinny ARD contract + a rendered display. Preserves the ARS analysis_id/operation_id on every row so lineage reconstructs. Writes /workspace/{ard,tfl,code}/<id>.* and updates coverage.json (status + repairs) for each custom output, leaving the standard outputs untouched. Adapts the proven reference /app/container/draft_custom.R. On a revise re-entry, reads the reviewer comment and fixes only the affected outputs.",
       "env": {
         "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
         "ANTHROPIC_API_KEY": "",
         "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
       },
       "agent": {
-        "skill": "ars-to-tfl",
+        "skill": "draft-custom-programs",
         "skillsDir": "plugins/cdisc-case-3/skills",
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
@@ -66,7 +117,7 @@
         "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 40
+        "timeoutMinutes": 30
       }
     },
     {
@@ -74,28 +125,28 @@
       "name": "Review drafted programs",
       "type": "review",
       "executor": "human",
-      "description": "Review the draft TFLs and, for the custom efficacy outputs, the AI-drafted R. Approve to package, or revise to send the run back with feedback.",
+      "description": "Review only the AI-drafted custom efficacy programs (/workspace/code/*.R) and their rendered displays; coverage.json lists each custom output with its status and any repair notes. Approve to assemble, or request changes to send the run back to Draft custom with your comment. The deterministic standard outputs need no review.",
       "params": [
         {
           "name": "comment",
           "type": "string",
           "required": false,
           "requiredForVerdicts": ["revise"],
-          "description": "What to change (required when revising)."
+          "description": "What to change (required when requesting changes)."
         }
       ],
       "verdicts": {
-        "approve": { "target": "package-tfl", "label": "Approve", "intent": "success" },
-        "revise": { "target": "generate-tfl", "label": "Request Changes", "intent": "warning", "requiresComment": true }
+        "approve": { "target": "assemble-trace", "label": "Approve", "intent": "success" },
+        "revise": { "target": "draft-custom", "label": "Request Changes", "intent": "warning", "requiresComment": true }
       }
     },
     {
-      "id": "package-tfl",
-      "name": "Package TFLs + Traceability",
+      "id": "assemble-trace",
+      "name": "Assemble ARD + Traceability",
       "type": "creation",
       "executor": "script",
       "plugin": "script-container",
-      "description": "Deterministic. Coverage gate (every ARS Output -> a rendered file + an ARD); consolidate the ARD into one long-skinny ard.csv; write results back into the Reporting Event (Analysis.results[]); build traceability.html; write manifest.json. All to /output.",
+      "description": "Deterministic. Coverage gate (every ARS Output has an ARD + a rendered file, else fail). Consolidate all /workspace/ard/*.csv into one long-skinny /output/ard.csv; write each value back into Analysis.results[] of /output/reporting_event_with_results.json; build the objective->endpoint->result graph (/output/trace_graph.json) and the interactive /output/traceability.html; write /output/manifest.json.",
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
@@ -110,10 +161,13 @@
   ],
   "transitions": [
     { "from": "provide-inputs", "to": "stage-inputs" },
-    { "from": "stage-inputs", "to": "generate-tfl" },
-    { "from": "generate-tfl", "to": "review-programs" },
-    { "from": "review-programs", "to": "package-tfl" },
-    { "from": "review-programs", "to": "generate-tfl" },
-    { "from": "package-tfl", "to": "done" }
+    { "from": "stage-inputs", "to": "bind-validate" },
+    { "from": "bind-validate", "to": "classify-outputs" },
+    { "from": "classify-outputs", "to": "run-standard" },
+    { "from": "run-standard", "to": "draft-custom" },
+    { "from": "draft-custom", "to": "review-programs" },
+    { "from": "review-programs", "to": "assemble-trace" },
+    { "from": "review-programs", "to": "draft-custom" },
+    { "from": "assemble-trace", "to": "done" }
   ]
 }

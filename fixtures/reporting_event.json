@@ -373,6 +373,38 @@
               }
             ]
           }
+        },
+        {
+          "name": "ADAS-Cog (11) Change from Baseline to Week 24 (ANCOVA)",
+          "level": 1,
+          "order": 6,
+          "outputId": "Out14-3-01",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "ADAS-Cog (11) Change from Baseline to Week 24 - ANCOVA",
+                "level": 2,
+                "order": 1,
+                "analysisId": "AnEff01_ADAS_Wk24_ANCOVA"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Time to First Dermatologic Event (Kaplan-Meier)",
+          "level": 1,
+          "order": 7,
+          "outputId": "Out14-KM-01",
+          "sublist": {
+            "listItems": [
+              {
+                "name": "Time to First Dermatologic Event - Kaplan-Meier",
+                "level": 2,
+                "order": 1,
+                "analysisId": "AnEff02_TTE_KM"
+              }
+            ]
+          }
         }
       ]
     }
@@ -413,6 +445,18 @@
             "level": 1,
             "order": 5,
             "outputId": "Out14-3-3-1b"
+          },
+          {
+            "name": "ADAS-Cog (11) Change from Baseline to Week 24 (ANCOVA)",
+            "level": 1,
+            "order": 6,
+            "outputId": "Out14-3-01"
+          },
+          {
+            "name": "Time to First Dermatologic Event (Kaplan-Meier)",
+            "level": 1,
+            "order": 7,
+            "outputId": "Out14-KM-01"
           }
         ]
       }
@@ -1085,7 +1129,7 @@
         "variable": "PARAMCD",
         "comparator": "EQ",
         "value": [
-          "TTDE"
+          "TTDERM"
         ]
       }
     }

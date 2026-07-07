@@ -8,8 +8,8 @@ trial). Uploaded files land among the step inputs in /output (and sometimes
 /workspace); we scan both.
 
 Writes:
-  /workspace/reporting_event.json   the ARS spec, for the generate-tfl step
-  /workspace/adam/*.csv             the ADaM datasets, for the generate-tfl step
+  /workspace/reporting_event.json   the ARS spec, for the bind-validate step
+  /workspace/adam/*.csv             the ADaM datasets, for the downstream steps
   /output/result.json              a small run summary
 """
 

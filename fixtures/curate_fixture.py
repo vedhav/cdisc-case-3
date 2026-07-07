@@ -81,7 +81,7 @@ re["dataSubsets"].append({
 re["dataSubsets"].append({
     "id": "DssEff02_TTE_Primary", "name": "Primary time-to-event parameter",
     "level": 1, "order": n_dss + 2,
-    "condition": {"dataset": "ADTTE", "variable": "PARAMCD", "comparator": "EQ", "value": ["TTDE"]},
+    "condition": {"dataset": "ADTTE", "variable": "PARAMCD", "comparator": "EQ", "value": ["TTDERM"]},
 })
 
 # 2c) New analyses (ITT, treatment grouping — both already defined in the base).
@@ -152,6 +152,29 @@ re["outputs"].append({
          "fileType": {"controlledTerm": "pdf"}, "location": "./f14-km-01-ttde.pdf"},
     ],
 })
+
+# 2e) Register the efficacy outputs in the Lists of Contents so the
+#     output -> analysis linkage is STRUCTURAL (the safety outputs already are).
+#     Without this the only place Out14-3-01 -> AnEff01 lived was hardcoded driver
+#     code; classify_outputs.py / package.R now derive it from the LOPA by walking
+#     the tree, so every output is traceable to its analysis by construction.
+lopa = re["mainListOfContents"]["contentsList"]["listItems"]
+_other = re["otherListsOfContents"]
+if isinstance(_other, dict):
+    _other = [_other]
+lopo = next((o for o in _other if o.get("label") == "LOPO"), _other[0])["contentsList"]["listItems"]
+_eff_lop = [
+    ("Out14-3-01", "ADAS-Cog (11) Change from Baseline to Week 24 (ANCOVA)",
+     "ADAS-Cog (11) Change from Baseline to Week 24 - ANCOVA", "AnEff01_ADAS_Wk24_ANCOVA"),
+    ("Out14-KM-01", "Time to First Dermatologic Event (Kaplan-Meier)",
+     "Time to First Dermatologic Event - Kaplan-Meier", "AnEff02_TTE_KM"),
+]
+for _i, (_oid, _oname, _aname, _aid) in enumerate(_eff_lop):
+    _order = len(lopa) + 1
+    lopa.append({"name": _oname, "level": 1, "order": _order, "outputId": _oid,
+                 "sublist": {"listItems": [
+                     {"name": _aname, "level": 2, "order": 1, "analysisId": _aid}]}})
+    lopo.append({"name": _oname, "level": 1, "order": len(lopo) + 1, "outputId": _oid})
 
 # 3) Validate against the pinned schema.
 import jsonschema

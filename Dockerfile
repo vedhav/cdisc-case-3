@@ -5,14 +5,16 @@
 #   - the ARD + render stack (cards, cardx, gtsummary, gt, ggplot2) and the
 #     model/survival helpers the custom efficacy path drafts against
 #     (broom, survival, emmeans)
-#   - the deterministic step scripts (stage_inputs.py, package.R) and the
-#     recipe library (container/recipes/) for the standard safety outputs
+#   - the deterministic step scripts (stage_inputs.py, bind_validate.py,
+#     classify_outputs.py, run_standard.R, package.R), the recipe library
+#     (container/recipes/) for the standard safety outputs, and draft_custom.R
+#     (the reference the custom-output agent step adapts)
 #   - the bundled CDISCPILOT01 reference (ARS Reporting Event + ADaM) and the
 #     pinned ARS v1.0 JSON schema, under /app/fixtures
 #
 # NOTE: `siera` is deliberately NOT installed. The ARS-native CRAN package is
 # pre-1.0 and its back end is not production-grade; the agent drafts analysis R
-# directly on cards/cardx instead (see the ars-to-tfl skill). See PLAN-3 §3.
+# directly on cards/cardx instead (see the draft-custom-programs skill). See PLAN-3 §3.
 #
 # Skills are NOT baked in — they are read at run time from the repo via the
 # workflow's externalSkillsRepo + skillsDir. Only the R packages, the scripts,

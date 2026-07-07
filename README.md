@@ -16,13 +16,21 @@ See [`../mediforce/PLAN-3.md`](../mediforce/PLAN-3.md) for the full design.
 
 ## Steps
 
+The former single "do everything" agent step is **decomposed into
+single-responsibility steps**. Everything an LLM does *not* need to do — binding,
+classification, running validated code — is deterministic; the AI is scoped to
+the one thing no validated code covers (drafting the custom efficacy programs).
+
 | # | Step | executor / plugin | What it does |
 |---|------|-------------------|--------------|
 | 1 | Provide inputs | `human` | Upload an ARS Reporting Event JSON + ADaM (or leave empty for the bundled CDISCPILOT01 reference) |
 | 2 | Stage inputs | `script` | Resolve uploaded-or-bundled → `/workspace/reporting_event.json` + `/workspace/adam/` |
-| 3 | Generate TFLs | `agent` + `ars-to-tfl` skill | **AI.** Bind ARS↔ADaM; classify each output standard/custom; run recipes / draft + repair programs → ARD + rendered display |
-| 4 | Review programs | `human` (`type: review`) | Approve → package; Request Changes → back to Generate with the comment |
-| 5 | Package TFLs | `script` (R) | Coverage gate; consolidate `ard.csv`; write results back into the Reporting Event; build `traceability.html`; `manifest.json` |
+| 3 | Bind ARS to ADaM | `script` (py) | **Deterministic.** Resolve every `dataset.variable` (analysisSets, dataSubsets, groupings, analyses) against the real ADaM headers → `bindings.json` + `unbound.json` (gaps surfaced early, never dropped) |
+| 4 | Classify outputs | `script` (py) | **Deterministic.** Rules table → standard vs custom per output; emit a fully-resolved recipe plan (recipe + args + real analysis/operation ids) → `coverage.json` + `standard_plan.json` |
+| 5 | Run standard outputs | `script` (R) | **Deterministic, no LLM.** Execute the recipe plan over the validated recipe library → ARD + rendered table for every standard output |
+| 6 | Draft custom programs | `agent` + `draft-custom-programs` skill | **AI, scoped to the custom outputs only.** Draft + run + repair standalone ANCOVA/KM programs → ARD + display + code; never touches the standard outputs |
+| 7 | Review programs | `human` (`type: review`) | Review just the drafted custom programs. Approve → assemble; Request Changes → back to Draft custom with the comment |
+| 8 | Assemble ARD + Traceability | `script` (R) | Coverage gate; consolidate `ard.csv`; write results back into the Reporting Event; build `traceability.html`; `manifest.json` |
 
 ## Two-mode execution (the design fact)
 
@@ -33,6 +41,14 @@ See [`../mediforce/PLAN-3.md`](../mediforce/PLAN-3.md) for the full design.
 - **Custom efficacy outputs** (ADAS-Cog ANCOVA, time-to-event Kaplan-Meier) →
   the agent **drafts a standalone program**, runs it, repairs until it renders,
   and a human reviews it. Even here it emits the same long-skinny ARD contract.
+
+Because binding, classification, and the standard run are deterministic scripts,
+the standard safety outputs are **reproducible by construction** — the LLM cannot
+mis-bind or silently drop them, and every ARD row carries the real ARS analysis
+and operation id so results write straight back into the spec. Inferential
+comparison analyses (chi-square/ANOVA/Fisher) are outside the descriptive recipe
+library; they are recorded as `not_computed` in `coverage.json` and shown as gaps
+in the traceability graph rather than faked.
 
 `siera` (the ARS-native CRAN package) is deliberately **not** used — it is
 pre-1.0 and its back end is not production-grade (per practitioner review). The
@@ -68,20 +84,22 @@ spec out, one CDISC artifact.
 
 ```
 container/stage_inputs.py          step 2 (resolve uploaded-or-bundled inputs)
+container/bind_validate.py         step 3 (deterministic ARS->ADaM binding; gaps -> unbound.json)
+container/classify_outputs.py      step 4 (deterministic classify + resolved recipe plan)
+container/run_standard.R           step 5 (dumb executor of the recipe plan; no LLM)
 container/recipes/recipes.R        the validated standard-output recipe library
-container/recipes/example_driver.R WORKING reference driver for the agent (all 7 outputs)
-container/package.R                package step (coverage gate + ard.csv + write-back + traceability)
+container/draft_custom.R           the WORKING reference the draft-custom AI step adapts (ANCOVA + KM)
+container/package.R                step 8 (coverage gate + ard.csv + write-back + traceability)
 container/build_trace.py           builds the interactive /output/traceability.html from run artifacts
-plugins/cdisc-case-3/skills/ars-to-tfl/SKILL.md   step 3 skill (the AI value-add)
+plugins/cdisc-case-3/skills/draft-custom-programs/SKILL.md   step 6 skill (the AI value-add, custom only)
 viz/                               interactive traceability graph (template + shared graph builder); see viz/README.md
-fixtures/reporting_event.json      bundled CDISCPILOT01 ARS (5 safety + 2 efficacy outputs)
+fixtures/reporting_event.json      bundled CDISCPILOT01 ARS (5 safety + 2 efficacy outputs; all in the LOPA)
 fixtures/adam/*.csv                bundled CDISCPILOT01 ADaM
 fixtures/usdm_trace.json           bundled USDM objectives/endpoints + endpoint->output map (the traceability graph's USDM half)
-fixtures/ars_ldm.schema.json       pinned ARS v1.0 JSON schema
+fixtures/ars/ars_ldm.schema.json   pinned ARS v1.0 JSON schema
 fixtures/curate_fixture.py         how the bundled Reporting Event was curated (provenance)
 Dockerfile                         golden image + cards/cardx/gtsummary/survival/emmeans (+ COPY viz/)
-src/cdisc-case-3.wd.json           the workflow definition
-src/cdisc-case-3.decomposed.wd.json  proposed multi-step decomposition of the single agent step
+src/cdisc-case-3.wd.json           the workflow definition (decomposed, single-responsibility steps)
 ```
 
 The bundled Reporting Event is the official CDISC ARS v1 **Common Safety
@@ -95,7 +113,7 @@ outputs for the custom path — see `fixtures/curate_fixture.py`.
   `skillsDir` — not baked into the image.
 - **Downloadable artifacts** go to `/output`; `/workspace` passes data between
   steps.
-- **Review step** routes `approve → package-tfl`, `revise → generate-tfl` (with
+- **Review step** routes `approve → assemble-trace`, `revise → draft-custom` (with
   the reviewer comment), mirroring the golden-standard-workflow review shape.
 
 ## Secrets (on the target instance)
@@ -103,7 +121,7 @@ outputs for the custom path — see `fixtures/curate_fixture.py`.
 | Secret | Used by |
 | ------ | ------- |
 | `GITHUB_TOKEN` | image build + skill clone (all container/agent steps) |
-| `OPENROUTER_API_KEY` | the `generate-tfl` agent step |
+| `OPENROUTER_API_KEY` | the `draft-custom` agent step |
 
 ## Runbook
 
@@ -124,5 +142,11 @@ pnpm exec mediforce run start --workflow="Use Case 3: AI-Driven Tables, Figures,
 ```
 
 Complete **Provide inputs** in the UI (leave empty for the bundled CDISCPILOT01).
-Steps 2–5 run automatically; the TFLs, `ard.csv`, `traceability.html`, and
-`reporting_event_with_results.json` appear as downloads on **Package TFLs**.
+Steps 2–8 run automatically (pausing only at **Review programs** for the human
+verdict); the TFLs, `ard.csv`, `traceability.html`, and
+`reporting_event_with_results.json` appear as downloads on **Assemble ARD +
+Traceability**.
+
+> After changing any script/skill/fixture, re-pin: `git rev-parse HEAD` and set
+> that SHA into `externalSkillsRepo.commit` and every step's `commit` in
+> `src/cdisc-case-3.wd.json` (the image + skills are cloned at that commit).

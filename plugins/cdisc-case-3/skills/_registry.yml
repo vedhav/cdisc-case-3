@@ -4,10 +4,10 @@ total_skills: 1
 
 domains:
   cdisc-case-3:
-    description: Execute a CDISC ARS Reporting Event against ADaM into TFLs + ARD
+    description: Execute a CDISC ARS Reporting Event against ADaM into TFLs + ARD (decomposed pipeline; AI drafts only the custom efficacy outputs)
     skills:
-      - id: ars-to-tfl
-        path: ars-to-tfl/SKILL.md
+      - id: draft-custom-programs
+        path: draft-custom-programs/SKILL.md
         complexity: advanced
         language: multi
-        description: Bind an ARS v1.0 Reporting Event to ADaM, run recipes for standard outputs and draft programs for custom outputs, produce ARD + rendered TFLs
+        description: Draft, run and repair standalone R programs for the CUSTOM efficacy outputs (ANCOVA, Kaplan-Meier, ...) that no validated recipe covers; emit the long-skinny ARD + rendered display, stamped with the ARS analysis/operation ids
