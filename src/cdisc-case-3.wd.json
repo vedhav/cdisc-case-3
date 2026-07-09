@@ -9,7 +9,7 @@
   },
   "externalSkillsRepo": {
     "url": "https://github.com/vedhav/cdisc-case-3",
-    "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+    "commit": "0000000000000000000000000000000000000000",
     "auth": "GITHUB_TOKEN"
   },
   "steps": [
@@ -38,7 +38,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
@@ -55,7 +55,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
@@ -72,7 +72,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 5,
@@ -89,7 +89,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 20,
@@ -114,7 +114,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 30
@@ -150,11 +150,55 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d30e7d3d20bafa4765a0c87d4e468b423203b219",
+        "commit": "0000000000000000000000000000000000000000",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 15,
         "command": "Rscript /app/container/package.R --ars /workspace/reporting_event.json --work /workspace --out /output"
+      }
+    },
+    {
+      "id": "propose-skill-update",
+      "name": "Propose skill lesson from review feedback",
+      "type": "creation",
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Self-learning loop. Read /workspace/review_feedback.jsonl (the reviewer comments Draft custom captured on each revise of Review programs this run), the approved custom programs (/workspace/code/*.R), coverage.json, and the current draft-custom-programs lessons-learned.md, and distil durable, skill-general lessons — the guidance that would have made the agent draft it right the first time. Emits ONLY a new append-block (never rewrites the file) to /output/result.json as { hasLessons, lessonAppendMarkdown, prTitle, prBody, summary }. When review_feedback.jsonl is absent or empty (first-pass approve, no revisions) emits hasLessons=false and no lesson, so the next step opens no PR.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "propose-skill-lesson",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "0000000000000000000000000000000000000000",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 15
+      }
+    },
+    {
+      "id": "open-skill-pr",
+      "name": "Open skill-lesson PR",
+      "type": "creation",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic. If propose-skill-update produced a lesson (hasLessons=true), fresh-clone SKILL_REPO with GITHUB_TOKEN, append lessonAppendMarkdown to plugins/cdisc-case-3/skills/draft-custom-programs/references/lessons-learned.md, branch skill-lesson/<runId>, commit as Mediforce Bot, push, and open a PR against main via the GitHub API. hasLessons=false (or byte-identical file) => no PR, clean exit with prCreated=false. Idempotent on retry: force-pushes the branch and reuses an existing open PR.",
+      "env": {
+        "SKILL_REPO": "vedhav/cdisc-case-3"
+      },
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "0000000000000000000000000000000000000000",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 10,
+        "command": "python3 /app/container/open_skill_pr.py"
       }
     },
     { "id": "done", "name": "Done", "type": "terminal", "executor": "human" }
@@ -168,6 +212,8 @@
     { "from": "draft-custom", "to": "review-programs" },
     { "from": "review-programs", "to": "assemble-trace" },
     { "from": "review-programs", "to": "draft-custom" },
-    { "from": "assemble-trace", "to": "done" }
+    { "from": "assemble-trace", "to": "propose-skill-update" },
+    { "from": "propose-skill-update", "to": "open-skill-pr" },
+    { "from": "open-skill-pr", "to": "done" }
   ]
 }

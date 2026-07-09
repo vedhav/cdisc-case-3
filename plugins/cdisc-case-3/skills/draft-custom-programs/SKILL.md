@@ -29,6 +29,9 @@ recipe library or the deterministic scripts.
 - `adam/*.csv` — the ADaM datasets.
 - On a **revise** re-entry: the reviewer's comment is in the step input. Read it,
   fix only the affected custom output(s), refresh the artifacts, and stop.
+- `references/lessons-learned.md` (in this skill) — durable guidance distilled
+  from prior runs' review feedback. **Read it first**, before drafting, and apply
+  any relevant lesson so you draft it right on the first pass.
 
 ## Reference — adapt this, don't reinvent it
 
@@ -82,6 +85,21 @@ the program you ran to `/workspace/code/<outputId>.R`.
 4. Update `coverage.json` for each custom output: set `status` to `rendered`,
    `program` to `code/<outputId>.R`, and append a one-line note per repair to
    `repairs`. Leave every `standard` entry untouched.
+
+## Capture review feedback (self-learning loop)
+
+On a **revise** re-entry only (the step input carries the reviewer comment),
+append one line to `/workspace/review_feedback.jsonl` **before** you start fixing:
+
+```json
+{"timestamp": "<ISO-8601 now>", "iteration": <N>, "comment": "<the reviewer comment verbatim>"}
+```
+
+One JSON object per line; append, never overwrite (earlier iterations must
+survive). `iteration` is the revise count (1 for the first revise, 2 for the
+next…). This log is the input to the downstream `propose-skill-update` step, which
+distils it into a durable lesson appended to `references/lessons-learned.md`. Do
+not write this file on the first (non-revise) pass.
 
 ## Self-validation (must pass before you finish)
 

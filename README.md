@@ -31,6 +31,42 @@ the one thing no validated code covers (drafting the custom efficacy programs).
 | 6 | Draft custom programs | `agent` + `draft-custom-programs` skill | **AI, scoped to the custom outputs only.** Draft + run + repair standalone ANCOVA/KM programs → ARD + display + code; never touches the standard outputs |
 | 7 | Review programs | `human` (`type: review`) | Review just the drafted custom programs. Approve → assemble; Request Changes → back to Draft custom with the comment |
 | 8 | Assemble ARD + Traceability | `script` (R) | Coverage gate; consolidate `ard.csv`; write results back into the Reporting Event; build `traceability.html`; `manifest.json` |
+| 9 | Propose skill lesson | `agent` + `propose-skill-lesson` skill | **Self-learning loop.** Distil this run's reviewer feedback (`review_feedback.jsonl`) into a durable, append-only lesson for the `draft-custom-programs` skill. First-pass approval (no revisions) ⇒ no lesson |
+| 10 | Open skill-lesson PR | `script` (py) | `open_skill_pr.py`: append the lesson to `draft-custom-programs/references/lessons-learned.md` and open a PR against the skill repo. No lesson ⇒ no PR, clean exit |
+
+## Self-learning loop (steps 9–10)
+
+The drafted-programs review is not thrown away. Each time the reviewer clicks
+**Request Changes** on step 7, step 6 (`draft-custom`) appends the comment to
+`/workspace/review_feedback.jsonl`. After the run is approved and packaged, the
+loop turns that feedback into durable skill guidance:
+
+- **Propose skill lesson** (agent, `propose-skill-lesson` skill) reads
+  `review_feedback.jsonl`, the approved programs, and the current
+  `lessons-learned.md`, and distils **skill-general** lessons — the guidance that
+  would have made the agent draft it right the first time. It emits *only a new
+  append block* (never rewrites the file): `{ hasLessons, lessonAppendMarkdown,
+  prTitle, prBody, summary }`.
+- **Open skill-lesson PR** (script, `open_skill_pr.py`) fresh-clones `SKILL_REPO`,
+  **deterministically appends** the block to
+  `plugins/cdisc-case-3/skills/draft-custom-programs/references/lessons-learned.md`,
+  branches `skill-lesson/<runId>`, commits as `Mediforce Bot`, pushes, and opens a
+  PR against `main`. A maintainer reviews and merges; the next run reads the
+  merged lesson before drafting.
+
+The loop is **append-only** (mirrors the landing-zone `propose-rules` pattern):
+the agent proposes only a new block, the script only appends, and existing lessons
+are never edited by the workflow — the PR review is the human gate. A first-pass
+approval with no revisions produces `hasLessons: false` and opens no PR. No
+`workspace.remote` is used; the PR step self-clones, so the deterministic pipeline
+(steps 1–8) is untouched.
+
+Output contracts:
+
+| Step | `/output/result.json` shape |
+|------|------------------------------|
+| `propose-skill-update` | `{ hasLessons: bool, lessonAppendMarkdown: string, prTitle: string, prBody: string, summary: string }` |
+| `open-skill-pr` | `{ prCreated: bool, prUrl: string\|null, branch: string\|null, reason: string\|null }` |
 
 ## Two-mode execution (the design fact)
 
@@ -91,7 +127,11 @@ container/recipes/recipes.R        the validated standard-output recipe library
 container/draft_custom.R           the WORKING reference the draft-custom AI step adapts (ANCOVA + KM)
 container/package.R                step 8 (coverage gate + ard.csv + write-back + traceability)
 container/build_trace.py           builds the interactive /output/traceability.html from run artifacts
+container/open_skill_pr.py         step 10 (append the distilled lesson to lessons-learned.md; open the skill PR)
 plugins/cdisc-case-3/skills/draft-custom-programs/SKILL.md   step 6 skill (the AI value-add, custom only)
+plugins/cdisc-case-3/skills/draft-custom-programs/references/lessons-learned.md   append-only feedback the skill reads before drafting
+plugins/cdisc-case-3/skills/propose-skill-lesson/SKILL.md    step 9 skill (distil review feedback into a durable lesson)
+tests/                             behavior test for open_skill_pr.py (+ TEST_SUMMARY.md)
 viz/                               interactive traceability graph (template + shared graph builder); see viz/README.md
 fixtures/reporting_event.json      bundled CDISCPILOT01 ARS (5 safety + 2 efficacy outputs; all in the LOPA)
 fixtures/adam/*.csv                bundled CDISCPILOT01 ADaM
@@ -120,8 +160,11 @@ outputs for the custom path — see `fixtures/curate_fixture.py`.
 
 | Secret | Used by |
 | ------ | ------- |
-| `GITHUB_TOKEN` | image build + skill clone (all container/agent steps) |
-| `OPENROUTER_API_KEY` | the `draft-custom` agent step |
+| `GITHUB_TOKEN` | image build + skill clone (all container/agent steps); **also** the `open-skill-pr` step to clone `SKILL_REPO` and open the lesson PR — needs `contents:write` + `pull-requests:write` |
+| `OPENROUTER_API_KEY` | the `draft-custom` and `propose-skill-update` agent steps |
+
+Non-secret step env: `open-skill-pr` sets `SKILL_REPO=vedhav/cdisc-case-3` (the
+repo the `draft-custom-programs` skill lives in, where the lesson PR is opened).
 
 ## Runbook
 

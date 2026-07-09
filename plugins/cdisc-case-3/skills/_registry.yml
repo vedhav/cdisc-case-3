@@ -1,6 +1,6 @@
 version: "1.0"
 standard: "agentskills.io/specification"
-total_skills: 1
+total_skills: 2
 
 domains:
   cdisc-case-3:
@@ -11,3 +11,8 @@ domains:
         complexity: advanced
         language: multi
         description: Draft, run and repair standalone R programs for the CUSTOM efficacy outputs (ANCOVA, Kaplan-Meier, ...) that no validated recipe covers; emit the long-skinny ARD + rendered display, stamped with the ARS analysis/operation ids
+      - id: propose-skill-lesson
+        path: propose-skill-lesson/SKILL.md
+        complexity: intermediate
+        language: text
+        description: Distil durable, append-only lessons for the draft-custom-programs skill from a run's reviewer feedback (review_feedback.jsonl); emit the new lessons-learned.md block + PR title/body for the self-learning loop

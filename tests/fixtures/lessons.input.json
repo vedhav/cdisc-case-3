@@ -1,0 +1,8 @@
+{
+  "hasLessons": true,
+  "lessonAppendMarkdown": "\n### 2026-07-09 — run test-run-0002\n\n- **Lesson:** Take population N from ADSL after applying the analysisSet filter. **Why:** reviewer flagged N pulled from ADQSADAS.\n",
+  "prTitle": "draft-custom-programs: 1 lesson from run test-run-0002 review",
+  "prBody": "## Summary\n\nCodifies reviewer feedback.\n",
+  "summary": "Skill will now source population N from ADSL.",
+  "runId": "test-run-0002"
+}
