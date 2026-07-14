@@ -1,7 +1,7 @@
 {
   "name": "Use Case 3: AI-Driven Tables, Figures, and Listings (TFL) Generation",
   "title": "CDISC Case 3 - USDM to traceable TFLs (plan -> spec -> ADaM -> ARD -> TFL)",
-  "description": "Full protocol-to-TFL pipeline. Given a study's USDM metadata (and SDTM), plan the exhaustive, traceable TFL list, audit it, build the ARS-aligned analysis + ADaM specs, derive ADaM from SDTM, generate the ARD (cards/cardx) and rendered TFLs, and assemble an interactive objective->endpoint->SDTM->ADaM->TFL traceability graph. Three human review gates (plan, specs, TFLs) each feed a self-learning skill-refinement loop: reviewer feedback is distilled into durable, per-skill lessons and opened as a PR so the skills improve over time. Artifacts land in /output. Blank inputs run the bundled CDISCPILOT01 reference.",
+  "description": "Full protocol-to-TFL pipeline. Given a study's uploaded USDM metadata + SDTM datasets, plan the exhaustive, traceable TFL list, audit it, build the ARS-aligned analysis + ADaM specs, derive ADaM from SDTM, generate the ARD (cards/cardx) and rendered TFLs, and assemble an interactive objective->endpoint->SDTM->ADaM->TFL traceability graph. Three human review gates (plan, specs, TFLs) each feed a self-learning skill-refinement loop: reviewer feedback is distilled into durable, per-skill lessons and opened as a PR so the skills improve over time. Artifacts land in /output.",
   "triggers": [{ "name": "manual", "type": "manual" }],
   "env": {
     "GITHUB_TOKEN": "{{GITHUB_TOKEN}}",
@@ -18,13 +18,13 @@
       "name": "Provide inputs",
       "type": "creation",
       "executor": "human",
-      "description": "Confirm the inputs for this run. Provide a study's USDM JSON (and SDTM datasets) or leave blank to run the bundled CDISCPILOT01 reference end-to-end.",
+      "description": "Upload the study's USDM study-definition JSON and its SDTM datasets (and, optionally, reference CSR outputs to enable the numeric diff in generate-tlfs). An upload is required — nothing is bundled.",
       "params": [
         {
           "name": "inputNote",
           "type": "string",
           "required": false,
-          "description": "Optional note (e.g. which study / USDM this run uses). Blank = bundled CDISCPILOT01 reference (USDM + SDTM + CSR ground truth)."
+          "description": "Optional note (e.g. which study / USDM this run uses)."
         }
       ]
     },
@@ -34,7 +34,7 @@
       "type": "creation",
       "executor": "script",
       "plugin": "script-container",
-      "description": "Deterministic. Resolve the USDM JSON + SDTM datasets from the upload, or fall back to the bundled CDISCPILOT01 reference. Writes /workspace/usdm.json, /workspace/sdtm/, and (when present) /workspace/ground_truth/ (the CSR outputs used for the numeric diff in generate-tlfs).",
+      "description": "Deterministic. Resolve the uploaded USDM JSON + SDTM datasets (fails if none uploaded). Writes /workspace/usdm.json, /workspace/sdtm/, and (when uploaded) /workspace/ground_truth/ (the CSR outputs used for the numeric diff in generate-tlfs).",
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",

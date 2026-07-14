@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """Step 2 (stage-inputs): resolve the USDM + SDTM inputs for this run.
 
-The human step may upload a USDM v3+ study-definition JSON and/or SDTM datasets.
-If present we use them; otherwise we fall back to the bundled CDISCPILOT01
-reference (the same study Cases 1 and 2 use, so the three cases chain on one
-trial). Uploaded files land among the step inputs in /output (and sometimes
-/workspace); we scan both.
+The human step uploads a USDM v3+ study-definition JSON and the SDTM datasets;
+optionally, reference CSR outputs (ground truth) to enable the numeric diff in
+generate-tlfs. Uploaded files land among the step inputs in /output (and
+sometimes /workspace); we scan both. Nothing is bundled — a run needs an upload.
 
 Writes:
   /workspace/usdm.json          the USDM study definition, for plan-tlfs
   /workspace/sdtm/*             the SDTM datasets, for derive-adam
   /workspace/ground_truth/*     (optional) reference CSR outputs for the numeric
-                                diff in generate-tlfs — only when bundled/uploaded
+                                diff in generate-tlfs — only when uploaded
   /output/result.json           a small run summary
 """
 
@@ -23,9 +22,6 @@ from pathlib import Path
 
 WORKSPACE = Path("/workspace")
 OUTPUT = Path("/output")
-BUNDLED_USDM = Path("/app/fixtures/usdm.json")
-BUNDLED_SDTM = Path("/app/fixtures/sdtm")
-BUNDLED_GROUND_TRUTH = Path("/app/fixtures/ground_truth")
 
 RESERVED_JSON = {
     "result.json", "input.json", "usdm.json", "study-model.json", "tlf-plan.json",
@@ -84,59 +80,51 @@ def main() -> None:
     sdtm_dir = WORKSPACE / "sdtm"
     sdtm_dir.mkdir(parents=True, exist_ok=True)
 
-    # --- USDM ---
+    # --- USDM (upload required) ---
     uploaded_usdm = find_uploaded_usdm()
-    usdm_source_path = uploaded_usdm if uploaded_usdm is not None else BUNDLED_USDM
-    if not usdm_source_path.exists():
-        raise SystemExit(f"No USDM available — neither an upload nor the bundled fixture at {BUNDLED_USDM}.")
-    usdm = json.loads(usdm_source_path.read_text(encoding="utf-8"))
+    if uploaded_usdm is None:
+        raise SystemExit("No USDM uploaded — provide a USDM study-definition JSON at Provide inputs.")
+    usdm = json.loads(uploaded_usdm.read_text(encoding="utf-8"))
     if not looks_like_usdm(usdm):
-        raise SystemExit(f"{usdm_source_path} does not look like a USDM study definition.")
+        raise SystemExit(f"{uploaded_usdm} does not look like a USDM study definition.")
     (WORKSPACE / "usdm.json").write_text(json.dumps(usdm, indent=2), encoding="utf-8")
-    usdm_source = "upload" if uploaded_usdm is not None else "bundled-reference"
 
-    # --- SDTM ---
+    # --- SDTM (upload required) ---
     uploaded_sdtm = find_uploaded_sdtm()
-    if uploaded_sdtm:
-        for src in uploaded_sdtm:
-            shutil.copy2(src, sdtm_dir / src.name.lower())
-        sdtm_source = "upload"
-    elif BUNDLED_SDTM.exists():
-        for src in sorted(BUNDLED_SDTM.iterdir()):
-            if src.is_file() and src.suffix.lower() in SDTM_EXTS:
-                shutil.copy2(src, sdtm_dir / src.name.lower())
-        sdtm_source = "bundled-reference"
-    else:
-        raise SystemExit(f"No SDTM available — no upload and no bundled fixture at {BUNDLED_SDTM}.")
+    if not uploaded_sdtm:
+        raise SystemExit("No SDTM uploaded — provide the SDTM datasets at Provide inputs.")
+    for src in uploaded_sdtm:
+        shutil.copy2(src, sdtm_dir / src.name.lower())
 
     sdtm_files = sorted(p.name for p in sdtm_dir.iterdir() if p.is_file())
     if not sdtm_files:
         raise SystemExit("No SDTM datasets staged.")
 
-    # --- Ground truth (optional; enables the numeric diff in generate-tlfs) ---
+    # --- Ground truth (optional upload; enables the numeric diff in generate-tlfs) ---
     ground_truth_source = None
-    if uploaded_usdm is None and BUNDLED_GROUND_TRUTH.exists():
+    gt_uploads = []
+    for directory in (OUTPUT, WORKSPACE):
+        if directory.exists():
+            gt_uploads += [p for p in directory.glob("*.md") if p.name.lower().startswith(("cdisc", "t-14", "f-14"))]
+    if gt_uploads:
         gt_dir = WORKSPACE / "ground_truth"
         gt_dir.mkdir(parents=True, exist_ok=True)
-        for src in sorted(BUNDLED_GROUND_TRUTH.glob("*")):
-            if src.is_file():
-                shutil.copy2(src, gt_dir / src.name)
-        if any(gt_dir.iterdir()):
-            ground_truth_source = "bundled-reference"
+        for src in gt_uploads:
+            shutil.copy2(src, gt_dir / src.name)
+        ground_truth_source = "upload"
 
     summary = {
         "status": "success",
-        "usdmSource": usdm_source,
+        "usdmSource": "upload",
         "usdmVersion": usdm.get("usdmVersion"),
-        "sdtmSource": sdtm_source,
+        "sdtmSource": "upload",
         "sdtmDatasets": sdtm_files,
         "groundTruth": ground_truth_source,
     }
     (OUTPUT / "result.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(
-        f"Staged USDM ({usdm_source}) and {len(sdtm_files)} SDTM datasets ({sdtm_source}): "
-        f"{', '.join(sdtm_files)}"
-        + (f"; ground truth: {ground_truth_source}" if ground_truth_source else "; no ground truth (numeric diff skipped)")
+        f"Staged uploaded USDM and {len(sdtm_files)} SDTM datasets: {', '.join(sdtm_files)}"
+        + (f"; ground truth: {len(gt_uploads)} files" if ground_truth_source else "; no ground truth (numeric diff skipped)")
     )
 
 

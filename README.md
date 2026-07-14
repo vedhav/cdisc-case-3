@@ -19,7 +19,7 @@ durable, per-skill lessons and opened as a PR, so the skills improve over time.
 
 | # | Step | Executor | Skill / script | Output |
 |---|------|----------|----------------|--------|
-| 1 | provide-inputs | human | — | run note (blank = bundled reference) |
+| 1 | provide-inputs | human | — | upload USDM + SDTM (+ optional CSR ground truth) |
 | 2 | stage-inputs | script | `stage_inputs.py` | `/workspace/usdm.json`, `/workspace/sdtm/`, `/workspace/ground_truth/` |
 | 3 | plan-tlfs | agent | `tlf-planner` | study-model.json, tlf-plan.json, tlf-index.md |
 | 4 | audit-plan | agent | `tlf-plan-critic` | coverage-report.md + verdict |
@@ -84,13 +84,17 @@ bundled CDISCPILOT01 reference (`fixtures/`). Skills are **not** baked in. Build
 reports, `traceability.html`, `trace_graph.json`, `manifest.json`, and each
 step's `result.json`.
 
-## Known-good input
+## Inputs (uploaded per run — nothing bundled)
 
-Leave `provide-inputs` blank to run the **bundled CDISCPILOT01 reference**
-(H2Q-MC-LZZT Alzheimer's study): its USDM, SDTM, and CSR ground truth ship under
-`/app/fixtures` in the image (`fixtures/usdm.json`, `fixtures/sdtm/`,
-`fixtures/ground_truth/`). `generate-tlfs` cell-diffs against the ground truth
-when present.
+At `provide-inputs`, upload:
+- the study's **USDM** study-definition JSON (required),
+- its **SDTM** datasets (required; `.xpt` / Dataset-JSON / `.csv`),
+- optionally, reference **CSR outputs** (markdown) as ground truth — when present,
+  `generate-tlfs` cell-diffs the generated tables against them.
+
+Known-good reference: the **CDISCPILOT01** (H2Q-MC-LZZT Alzheimer's) USDM + SDTM +
+CSR outputs, produced/held upstream (Case 1/Case 2 and the `protocol-to-tfl`
+source). `stage-inputs` fails fast if no USDM or SDTM is uploaded.
 
 ## Runtime source pinning
 
