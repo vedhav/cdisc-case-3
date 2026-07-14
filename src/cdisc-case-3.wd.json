@@ -1,7 +1,7 @@
 {
   "name": "Use Case 3: AI-Driven Tables, Figures, and Listings (TFL) Generation",
-  "title": "CDISC Case 3 - ARS Reporting Event + ADaM to traceable TFLs",
-  "description": "Execute a CDISC ARS v1.0 Reporting Event against ADaM to produce Tables, Figures, Listings and an ARD with end-to-end objective-to-result traceability. The work is decomposed into single-responsibility steps: deterministic binding (bind ARS refs to ADaM headers), deterministic classification + recipe planning, a deterministic recipe run for the standard safety outputs, an AI step scoped ONLY to drafting the custom efficacy programs, a tight human review of just those programs, then deterministic assembly + traceability. Artifacts land in /output.",
+  "title": "CDISC Case 3 - USDM to traceable TFLs (plan -> spec -> ADaM -> ARD -> TFL)",
+  "description": "Full protocol-to-TFL pipeline. Given a study's USDM metadata (and SDTM), plan the exhaustive, traceable TFL list, audit it, build the ARS-aligned analysis + ADaM specs, derive ADaM from SDTM, generate the ARD (cards/cardx) and rendered TFLs, and assemble an interactive objective->endpoint->SDTM->ADaM->TFL traceability graph. Three human review gates (plan, specs, TFLs) each feed a self-learning skill-refinement loop: reviewer feedback is distilled into durable, per-skill lessons and opened as a PR so the skills improve over time. Artifacts land in /output. Blank inputs run the bundled CDISCPILOT01 reference.",
   "triggers": [{ "name": "manual", "type": "manual" }],
   "env": {
     "GITHUB_TOKEN": "{{GITHUB_TOKEN}}",
@@ -9,7 +9,7 @@
   },
   "externalSkillsRepo": {
     "url": "https://github.com/vedhav/cdisc-case-3",
-    "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+    "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
     "auth": "GITHUB_TOKEN"
   },
   "steps": [
@@ -18,13 +18,13 @@
       "name": "Provide inputs",
       "type": "creation",
       "executor": "human",
-      "description": "Confirm the inputs for this run. By default it executes the bundled CDISCPILOT01 reference (the ARS v1.0 Reporting Event from Case 2 + its ADaM). Leave blank to use the reference.",
+      "description": "Confirm the inputs for this run. Provide a study's USDM JSON (and SDTM datasets) or leave blank to run the bundled CDISCPILOT01 reference end-to-end.",
       "params": [
         {
           "name": "inputNote",
           "type": "string",
           "required": false,
-          "description": "Optional note (e.g. which study / ARS this run uses). Blank = bundled CDISCPILOT01 reference."
+          "description": "Optional note (e.g. which study / USDM this run uses). Blank = bundled CDISCPILOT01 reference (USDM + SDTM + CSR ground truth)."
         }
       ]
     },
@@ -34,11 +34,11 @@
       "type": "creation",
       "executor": "script",
       "plugin": "script-container",
-      "description": "Deterministic. Resolve the Reporting Event + ADaM from the upload, or fall back to the bundled CDISCPILOT01 reference. Writes /workspace/reporting_event.json and /workspace/adam/.",
+      "description": "Deterministic. Resolve the USDM JSON + SDTM datasets from the upload, or fall back to the bundled CDISCPILOT01 reference. Writes /workspace/usdm.json, /workspace/sdtm/, and (when present) /workspace/ground_truth/ (the CSR outputs used for the numeric diff in generate-tlfs).",
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
@@ -46,124 +46,216 @@
       }
     },
     {
-      "id": "bind-validate",
-      "name": "Bind ARS to ADaM",
-      "type": "creation",
-      "executor": "script",
-      "plugin": "script-container",
-      "description": "Deterministic. Walk the ARS analysisSets, dataSubsets, groupings and each Analysis; resolve every dataset.variable / WhereClause against the actual ADaM column headers. Writes /workspace/bindings.json (resolved bindings) and /workspace/unbound.json (any reference that does not resolve - a traceability gap surfaced early, never silently dropped).",
-      "script": {
-        "image": "mediforce-agent:cdisc-case-3",
-        "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
-        "dockerfile": "Dockerfile",
-        "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 10,
-        "command": "python3 /app/container/bind_validate.py --ars /workspace/reporting_event.json --adam /workspace/adam --out /workspace"
-      }
-    },
-    {
-      "id": "classify-outputs",
-      "name": "Classify outputs (standard vs custom)",
-      "type": "decision",
-      "executor": "script",
-      "plugin": "script-container",
-      "description": "Deterministic. For each ARS Output decide standard (a validated recipe covers its shape: demographics, categorical/continuous summary, hierarchical AE by SOC/PT) vs custom (needs a fitted model or bespoke display: ANCOVA, Kaplan-Meier). Classification is a fixed rules table, not a judgement call. Writes /workspace/coverage.json.",
-      "script": {
-        "image": "mediforce-agent:cdisc-case-3",
-        "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
-        "dockerfile": "Dockerfile",
-        "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 5,
-        "command": "python3 /app/container/classify_outputs.py --ars /workspace/reporting_event.json --bindings /workspace/bindings.json --out /workspace"
-      }
-    },
-    {
-      "id": "run-standard",
-      "name": "Run standard outputs (validated recipes)",
-      "type": "creation",
-      "executor": "script",
-      "plugin": "script-container",
-      "description": "Deterministic, no LLM. For every output classified 'standard', call the fixed recipe library (cards/cardx/gtsummary) with ARS-derived bindings, emitting the long-skinny ARD (/workspace/ard/<id>.csv) and the rendered table (/workspace/tfl/<id>.html). 'Almost all safety outputs for free.'",
-      "script": {
-        "image": "mediforce-agent:cdisc-case-3",
-        "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
-        "dockerfile": "Dockerfile",
-        "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 20,
-        "command": "Rscript /app/container/run_standard.R --plan /workspace/standard_plan.json --coverage /workspace/coverage.json --bindings /workspace/bindings.json --adam /workspace/adam --work /workspace"
-      }
-    },
-    {
-      "id": "draft-custom",
-      "name": "Draft custom efficacy programs",
+      "id": "plan-tlfs",
+      "name": "Plan required TLFs from USDM",
       "type": "creation",
       "executor": "agent",
       "plugin": "claude-code-agent",
-      "description": "AI - scoped ONLY to the custom outputs. For each output classified 'custom' in coverage.json, draft a standalone R program (ANCOVA via lm+emmeans, KM via survival), run it, and repair until it emits the same long-skinny ARD contract + a rendered display. Preserves the ARS analysis_id/operation_id on every row so lineage reconstructs. Writes /workspace/{ard,tfl,code}/<id>.* and updates coverage.json (status + repairs) for each custom output, leaving the standard outputs untouched. Adapts the proven reference /app/container/draft_custom.R. On a revise re-entry, reads the reviewer comment and fixes only the affected outputs.",
+      "description": "AI. Run the tlf-planner skill on /workspace/usdm.json: interpret objectives/endpoints, add ICH E3 regulatory scaffolding, fan out statistical analyses (imputation/subgroup/timepoint), check data feasibility, and number the outputs. Writes study-model.json, tlf-plan.json, and the human-readable tlf-index.md to both /workspace and /output, and a /output/result.json summary. On a revise re-entry, read the reviewer comment from the review-plan step and append it to /workspace/review_feedback.jsonl as {\"skill\":\"tlf-planner\",\"iteration\":N,\"comment\":\"...\"}, then correct only the flagged items.",
       "env": {
         "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
         "ANTHROPIC_API_KEY": "",
         "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
       },
       "agent": {
-        "skill": "draft-custom-programs",
+        "skill": "tlf-planner",
         "skillsDir": "plugins/cdisc-case-3/skills",
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 30
       }
     },
     {
-      "id": "review-programs",
-      "name": "Review drafted programs",
+      "id": "audit-plan",
+      "name": "Audit TLF plan (traceability + completeness)",
+      "type": "creation",
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Run the tlf-plan-critic skill: independently audit /workspace/tlf-plan.json against /workspace/study-model.json (fresh context, reads only the plan + study model). Two-way coverage: every objective and resolved endpoint maps to >=1 planned TLF; every TLF traces to an endpoint/objective or a regulatory rule. Writes coverage-report.md to /workspace and /output, plus /output/result.json with the verdict.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "tlf-plan-critic",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 20
+      }
+    },
+    {
+      "id": "review-plan",
+      "name": "Review TLF plan",
       "type": "review",
       "executor": "human",
-      "description": "Review only the AI-drafted custom efficacy programs (/workspace/code/*.R) and their rendered displays; coverage.json lists each custom output with its status and any repair notes. Approve to assemble, or request changes to send the run back to Draft custom with your comment. The deterministic standard outputs need no review.",
+      "description": "Review the planned TLF list (/output/tlf-index.md) and the independent audit (/output/coverage-report.md). Approve to build the analysis + ADaM specs, or request changes to send the run back to Plan required TLFs with your comment (the planner captures it for the skill-refinement loop).",
       "params": [
         {
           "name": "comment",
           "type": "string",
           "required": false,
           "requiredForVerdicts": ["revise"],
-          "description": "What to change (required when requesting changes)."
+          "description": "What to change about the TLF plan (required when requesting changes)."
         }
       ],
       "verdicts": {
-        "approve": { "target": "assemble-trace", "label": "Approve", "intent": "success" },
-        "revise": { "target": "draft-custom", "label": "Request Changes", "intent": "warning", "requiresComment": true }
+        "approve": { "target": "build-specs", "label": "Approve plan", "intent": "success" },
+        "revise": { "target": "plan-tlfs", "label": "Request Changes", "intent": "warning", "requiresComment": true }
       }
     },
     {
-      "id": "assemble-trace",
-      "name": "Assemble ARD + Traceability",
+      "id": "build-specs",
+      "name": "Build analysis + ADaM specs",
       "type": "creation",
-      "executor": "script",
-      "plugin": "script-container",
-      "description": "Deterministic. Coverage gate (every ARS Output has an ARD + a rendered file, else fail). Consolidate all /workspace/ard/*.csv into one long-skinny /output/ard.csv; write each value back into Analysis.results[] of /output/reporting_event_with_results.json; build the objective->endpoint->result graph (/output/trace_graph.json) and the interactive /output/traceability.html; write /output/manifest.json.",
-      "script": {
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Run the tlf-analysis-spec skill on the approved plan: for each producible TLF emit an ARS-aligned analysis-spec entry (analysisSet, groupingFactor, dataSubset, method + operations), and aggregate the variable-level adam-spec.json (datasets, PARAMCDs, flags) INCLUDING the 3 mandatory derivation rules + the data-quality N-gate. Writes analysis-spec.json + adam-spec.json to /workspace and /output, plus /output/result.json. On a revise re-entry, append the reviewer comment to /workspace/review_feedback.jsonl as {\"skill\":\"tlf-analysis-spec\",...} and fix only the flagged specs.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "tlf-analysis-spec",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 15,
-        "command": "Rscript /app/container/package.R --ars /workspace/reporting_event.json --work /workspace --out /output"
+        "timeoutMinutes": 25
+      }
+    },
+    {
+      "id": "review-specs",
+      "name": "Review analysis + ADaM specs",
+      "type": "review",
+      "executor": "human",
+      "description": "Review the analysis specs (methods, populations, contrasts) and the ADaM spec (datasets, flags, mandatory derivation rules) in /output. Approve to derive ADaM, or request changes to send the run back to Build specs with your comment.",
+      "params": [
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "requiredForVerdicts": ["revise"],
+          "description": "What to change about the specs (required when requesting changes)."
+        }
+      ],
+      "verdicts": {
+        "approve": { "target": "derive-adam", "label": "Approve specs", "intent": "success" },
+        "revise": { "target": "build-specs", "label": "Request Changes", "intent": "warning", "requiresComment": true }
+      }
+    },
+    {
+      "id": "derive-adam",
+      "name": "Derive ADaM from SDTM",
+      "type": "creation",
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Run the sdtm-to-adam skill: derive the BDS/OCCDS/TTE ADaM datasets that /workspace/adam-spec.json demands from /workspace/sdtm/ using admiral. ENFORCE the 3 mandatory rules (day-based visit windowing that keeps unscheduled/ET visits; LOCF endpoint records; SITEGR1 pooling on randomized counts) and the data-quality N-gate (assert each analysis-set N against its population flag, fail on shortfall). Writes /workspace/adam/*.csv (+ derivation code + a conformance report) and /output/result.json.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "sdtm-to-adam",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 40
+      }
+    },
+    {
+      "id": "generate-tlfs",
+      "name": "Generate ARD + TLFs",
+      "type": "creation",
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Run the tlf-generator skill: for each TLF, compute the ARD (numbers) from ADaM per the analysis-spec using cards/cardx + emmeans directly (explicit contrast signs; MMRM via mmrm + custom ARD), then render the display (gtsummary tables, ggsurvfit figures) applying SAS rounding at display precision. Keep numbers and formatting as separate phases. When /workspace/ground_truth/ is present, cell-diff each table and write per-table match rates. Writes /workspace/{ard,tfl,code}/<id>.* and /output/ (rendered TLFs, ard, diff reports) + /output/result.json. On a revise re-entry, append the reviewer comment to /workspace/review_feedback.jsonl as {\"skill\":\"tlf-generator\",...} and fix only the flagged outputs.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "tlf-generator",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 45
+      }
+    },
+    {
+      "id": "review-tlfs",
+      "name": "Review generated TLFs",
+      "type": "review",
+      "executor": "human",
+      "description": "Review the rendered TLFs and, when ground truth was supplied, the numeric-diff report in /output. Approve to assemble traceability, or request changes to send the run back to Generate ARD + TLFs with your comment.",
+      "params": [
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "requiredForVerdicts": ["revise"],
+          "description": "What to change about the generated TLFs (required when requesting changes)."
+        }
+      ],
+      "verdicts": {
+        "approve": { "target": "build-traceability", "label": "Approve TLFs", "intent": "success" },
+        "revise": { "target": "generate-tlfs", "label": "Request Changes", "intent": "warning", "requiresComment": true }
+      }
+    },
+    {
+      "id": "build-traceability",
+      "name": "Assemble traceability explorer",
+      "type": "creation",
+      "executor": "agent",
+      "plugin": "claude-code-agent",
+      "description": "AI. Run the traceability-builder skill: assemble the objective -> endpoint -> SDTM -> ADaM -> TLF graph (linked by the ARD) from study-model.json, tlf-plan.json, analysis-spec.json, adam-spec.json, and the per-TLF ard/diff artifacts, and render a self-contained interactive node-graph HTML explorer with lineage highlighting, per-node detail panels (rendered TLF + status), and validation-status badges. Writes /output/traceability.html, /output/trace_graph.json, and /output/manifest.json, plus /output/result.json.",
+      "env": {
+        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
+        "ANTHROPIC_API_KEY": "",
+        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
+      },
+      "agent": {
+        "skill": "traceability-builder",
+        "skillsDir": "plugins/cdisc-case-3/skills",
+        "model": "~anthropic/claude-sonnet-latest",
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 25
       }
     },
     {
       "id": "propose-skill-update",
-      "name": "Propose skill lesson from review feedback",
+      "name": "Propose skill lessons from review feedback",
       "type": "creation",
       "executor": "agent",
       "plugin": "claude-code-agent",
-      "description": "AI. Self-learning loop. Read /workspace/review_feedback.jsonl (the reviewer comments Draft custom captured on each revise of Review programs this run), the approved custom programs (/workspace/code/*.R), coverage.json, and the current draft-custom-programs lessons-learned.md, and distil durable, skill-general lessons — the guidance that would have made the agent draft it right the first time. Emits ONLY a new append-block (never rewrites the file) to /output/result.json as { hasLessons, lessonAppendMarkdown, prTitle, prBody, summary }. When review_feedback.jsonl is absent or empty (first-pass approve, no revisions) emits hasLessons=false and no lesson, so the next step opens no PR.",
+      "description": "AI. Self-learning loop, generalized across all three review gates. Read /workspace/review_feedback.jsonl (reviewer comments captured by plan-tlfs, build-specs, and generate-tlfs on each revise, each tagged with its skill), the approved artifacts, and each target skill's current references/lessons-learned.md. For EACH skill that was revised, distil durable, skill-general lessons and emit a per-skill append block. Writes /output/result.json as { hasLessons, lessons: [ { skill, lessonAppendMarkdown } ], prTitle, prBody, summary }. When review_feedback.jsonl is absent/empty (first-pass approvals) emit hasLessons=false and no lessons.",
       "env": {
         "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
         "ANTHROPIC_API_KEY": "",
@@ -175,7 +267,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 15
@@ -187,14 +279,14 @@
       "type": "creation",
       "executor": "script",
       "plugin": "script-container",
-      "description": "Deterministic. If propose-skill-update produced a lesson (hasLessons=true), fresh-clone SKILL_REPO with GITHUB_TOKEN, append lessonAppendMarkdown to plugins/cdisc-case-3/skills/draft-custom-programs/references/lessons-learned.md, branch skill-lesson/<runId>, commit as Mediforce Bot, push, and open a PR against main via the GitHub API. hasLessons=false (or byte-identical file) => no PR, clean exit with prCreated=false. Idempotent on retry: force-pushes the branch and reuses an existing open PR.",
+      "description": "Deterministic. If propose-skill-update produced lessons (hasLessons=true), fresh-clone SKILL_REPO with GITHUB_TOKEN, append each lesson's block to that skill's plugins/cdisc-case-3/skills/<skill>/references/lessons-learned.md, branch skill-lesson/<runId>, commit as Mediforce Bot, push, and open one PR against main covering all touched skills. hasLessons=false (or byte-identical files) => no PR, clean exit. Idempotent on retry: force-pushes the branch and reuses an existing open PR.",
       "env": {
         "SKILL_REPO": "vedhav/cdisc-case-3"
       },
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "d7ee51408220c66a92940ccf9d133b4bb81aa35e",
+        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
@@ -205,14 +297,19 @@
   ],
   "transitions": [
     { "from": "provide-inputs", "to": "stage-inputs" },
-    { "from": "stage-inputs", "to": "bind-validate" },
-    { "from": "bind-validate", "to": "classify-outputs" },
-    { "from": "classify-outputs", "to": "run-standard" },
-    { "from": "run-standard", "to": "draft-custom" },
-    { "from": "draft-custom", "to": "review-programs" },
-    { "from": "review-programs", "to": "assemble-trace" },
-    { "from": "review-programs", "to": "draft-custom" },
-    { "from": "assemble-trace", "to": "propose-skill-update" },
+    { "from": "stage-inputs", "to": "plan-tlfs" },
+    { "from": "plan-tlfs", "to": "audit-plan" },
+    { "from": "audit-plan", "to": "review-plan" },
+    { "from": "review-plan", "to": "build-specs" },
+    { "from": "review-plan", "to": "plan-tlfs" },
+    { "from": "build-specs", "to": "review-specs" },
+    { "from": "review-specs", "to": "derive-adam" },
+    { "from": "review-specs", "to": "build-specs" },
+    { "from": "derive-adam", "to": "generate-tlfs" },
+    { "from": "generate-tlfs", "to": "review-tlfs" },
+    { "from": "review-tlfs", "to": "build-traceability" },
+    { "from": "review-tlfs", "to": "generate-tlfs" },
+    { "from": "build-traceability", "to": "propose-skill-update" },
     { "from": "propose-skill-update", "to": "open-skill-pr" },
     { "from": "open-skill-pr", "to": "done" }
   ]

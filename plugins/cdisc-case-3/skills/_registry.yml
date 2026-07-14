@@ -1,18 +1,43 @@
 version: "1.0"
 standard: "agentskills.io/specification"
-total_skills: 2
+total_skills: 7
 
 domains:
   cdisc-case-3:
-    description: Execute a CDISC ARS Reporting Event against ADaM into TFLs + ARD (decomposed pipeline; AI drafts only the custom efficacy outputs)
+    description: Full USDM -> TLF pipeline. Plan the required TLFs from USDM, audit them, build the ARS-aligned analysis + ADaM specs, derive ADaM from SDTM, generate the ARD + rendered TLFs, and assemble an interactive traceability graph. Three human review gates feed a self-learning skill-refinement loop.
     skills:
-      - id: draft-custom-programs
-        path: draft-custom-programs/SKILL.md
+      - id: tlf-planner
+        path: tlf-planner/SKILL.md
+        complexity: advanced
+        language: text
+        description: Derive the exhaustive, traceable list of required TLFs from a study's USDM metadata (six internal phases; scaffolding + efficacy + safety + fan-out + feasibility + numbering)
+      - id: tlf-plan-critic
+        path: tlf-plan-critic/SKILL.md
+        complexity: intermediate
+        language: text
+        description: Independently audit a TLF plan for two-way traceability and completeness before human review; emit a coverage report + verdict
+      - id: tlf-analysis-spec
+        path: tlf-analysis-spec/SKILL.md
+        complexity: advanced
+        language: text
+        description: Turn a reviewed TLF plan into the ARS-aligned analysis-spec (per-TLF method/population/contrasts) + the variable-level adam-spec (datasets/flags + mandatory derivation rules)
+      - id: sdtm-to-adam
+        path: sdtm-to-adam/SKILL.md
         complexity: advanced
         language: multi
-        description: Draft, run and repair standalone R programs for the CUSTOM efficacy outputs (ANCOVA, Kaplan-Meier, ...) that no validated recipe covers; emit the long-skinny ARD + rendered display, stamped with the ARS analysis/operation ids
+        description: Derive the BDS/OCCDS/TTE ADaM datasets the adam-spec demands from SDTM using admiral; enforce day-based windowing, LOCF endpoint records, SITEGR1 pooling, and a data-quality N-gate
+      - id: tlf-generator
+        path: tlf-generator/SKILL.md
+        complexity: advanced
+        language: multi
+        description: Compute the ARD (cards/cardx + emmeans; MMRM custom ARD) from ADaM per the analysis-spec and render the TLFs (gtsummary/ggsurvfit) with SAS rounding; validate cell-by-cell against ground truth
+      - id: traceability-builder
+        path: traceability-builder/SKILL.md
+        complexity: advanced
+        language: multi
+        description: Assemble the objective -> endpoint -> SDTM -> ADaM -> TLF graph (linked by ARD) and render a self-contained interactive node-graph HTML explorer with lineage highlighting + status badges
       - id: propose-skill-lesson
         path: propose-skill-lesson/SKILL.md
         complexity: intermediate
         language: text
-        description: Distil durable, append-only lessons for the draft-custom-programs skill from a run's reviewer feedback (review_feedback.jsonl); emit the new lessons-learned.md block + PR title/body for the self-learning loop
+        description: Generalized self-learning loop. Distil durable, per-skill lessons from a run's reviewer feedback across all three review gates (review_feedback.jsonl, tagged by skill); emit per-skill append blocks + PR metadata

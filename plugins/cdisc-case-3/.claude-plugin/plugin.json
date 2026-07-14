@@ -1,6 +1,6 @@
 {
   "name": "cdisc-case-3",
-  "description": "Skill for the CDISC Case 3 workflow. The pipeline is decomposed into deterministic steps (bind, classify, run validated recipes, assemble + traceability); the draft-custom-programs skill is the AI value-add, scoped to drafting standalone programs for the custom efficacy outputs no validated recipe covers.",
+  "description": "Skills for the CDISC Case 3 full USDM->TLF pipeline: tlf-planner (USDM -> required TLF list), tlf-plan-critic (independent audit), tlf-analysis-spec (analysis + ADaM specs), sdtm-to-adam (spec-driven ADaM derivation), tlf-generator (ARD via cards/cardx -> rendered TLFs), traceability-builder (interactive objective->endpoint->SDTM->ADaM->TLF explorer), and propose-skill-lesson (the generalized self-learning loop that refines these skills from reviewer feedback).",
   "author": {
     "name": "vedha"
   }
