@@ -9,7 +9,7 @@
   },
   "externalSkillsRepo": {
     "url": "https://github.com/vedhav/cdisc-case-3",
-    "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+    "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
     "auth": "GITHUB_TOKEN"
   },
   "steps": [
@@ -38,7 +38,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
@@ -63,7 +63,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 30
@@ -87,7 +87,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 20
@@ -131,7 +131,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 25
@@ -175,7 +175,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 40
@@ -199,7 +199,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 45
@@ -243,7 +243,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 25
@@ -267,7 +267,7 @@
         "model": "~anthropic/claude-sonnet-latest",
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 15
@@ -286,7 +286,7 @@
       "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
-        "commit": "86579b7ca9f83fe3d61a9d6b47eb1585266fb76c",
+        "commit": "a3839e6580c2082b1d20c5e9bfc9dfb83325fff1",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 10,
