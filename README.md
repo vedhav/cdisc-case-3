@@ -15,7 +15,7 @@ justify it. Three human review gates (plan, specs, TFLs) each feed a
 **self-learning skill-refinement loop**: reviewer feedback is distilled into
 durable, per-skill lessons and opened as a PR, so the skills improve over time.
 
-## Pipeline (14 steps)
+## Pipeline (13 steps)
 
 | # | Step | Executor | Skill / script | Output |
 |---|------|----------|----------------|--------|
@@ -28,7 +28,7 @@ durable, per-skill lessons and opened as a PR, so the skills improve over time.
 | 7 | derive-adam | agent | `sdtm-to-adam` | `/workspace/adam/*` + conformance report |
 | 8 | generate-tlfs | agent | `tlf-generator` | ARD + rendered TFLs |
 | 9 | **review-tlfs** | human review | — | approve → trace · revise → generate |
-| 10 | build-traceability | agent | `traceability-builder` | traceability.html, trace_graph.json, manifest.json |
+| 10 | build-traceability | script | `build_traceability.py` | traceability.html, trace_graph.json, manifest.json |
 | 11 | propose-skill-update | agent | `propose-skill-lesson` | per-skill lesson blocks |
 | 12 | open-skill-pr | script | `open_skill_pr.py` | PR against main (or clean no-op) |
 | 13 | done | human (terminal) | — | — |
@@ -54,11 +54,17 @@ produce no PR.
 
 ## Skills (in `plugins/cdisc-case-3/skills`, read at run time via `externalSkillsRepo` + `skillsDir`)
 
-`tlf-planner`, `tlf-plan-critic`, `tlf-analysis-spec`, `sdtm-to-adam`,
-`tlf-generator`, `traceability-builder`, `propose-skill-lesson`. The six pipeline
-skills are ported from the `protocol-to-tfl` design; the revisable ones
+Six skills run as agents: `tlf-planner`, `tlf-plan-critic`, `tlf-analysis-spec`,
+`sdtm-to-adam`, `tlf-generator`, `propose-skill-lesson`. The revisable ones
 (`tlf-planner`, `tlf-analysis-spec`, `tlf-generator`) each carry a
 `references/lessons-learned.md` that the loop appends to.
+
+`traceability-builder` is **no longer invoked as an agent** — the traceability
+step is now the deterministic `container/build_traceability.py` script (it never
+recomputes a statistic, so it needs no LLM; this removes its per-run cost and
+nondeterminism). The skill directory is retained as the shared design/mirror and
+as the human-readable contract the script implements
+(`references/graph-data-schema.md`).
 
 ## Environment variables & secrets
 

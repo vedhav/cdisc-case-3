@@ -212,24 +212,17 @@
       "id": "build-traceability",
       "name": "Assemble traceability explorer",
       "type": "creation",
-      "executor": "agent",
-      "plugin": "claude-code-agent",
-      "description": "AI. Run the traceability-builder skill: assemble the objective -> endpoint -> SDTM -> ADaM -> TLF graph (linked by the ARD) from study-model.json, tlf-plan.json, analysis-spec.json, adam-spec.json, and the per-TLF ard artifacts, and render a self-contained interactive node-graph HTML explorer with lineage highlighting, per-node detail panels (rendered TLF + status), and status badges. Writes /output/traceability.html, /output/trace_graph.json, and /output/manifest.json, plus /output/result.json.",
-      "env": {
-        "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
-        "ANTHROPIC_API_KEY": "",
-        "ANTHROPIC_BASE_URL": "https://openrouter.ai/api"
-      },
-      "agent": {
-        "skill": "traceability-builder",
-        "skillsDir": "plugins/cdisc-case-3/skills",
-        "model": "~anthropic/claude-sonnet-latest",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic. Run build_traceability.py: a pure reporting/visualisation layer that reads the run's already-produced artifacts (study-model.json, tlf-plan.json, analysis-spec.json, adam-spec.json from /workspace + the per-TLF ard/tfl/code outputs) and assembles the objective -> endpoint -> SDTM -> ADaM -> TLF graph (linked by the ARD). It NEVER recomputes a statistic. Emits ONE self-contained interactive HTML explorer (vanilla JS + SVG, zero external requests, theme-aware) with lineage highlighting, per-node detail panels (embedded rendered TLF + ARD + code), a data-derived issues feed, and type/status filters + search. Writes /output/traceability.html, /output/trace_graph.json, /output/manifest.json, plus /output/result.json. Parsing is tolerant: a missing optional field never drops a node, and absent inputs downgrade to a warn (never a crash).",
+      "script": {
         "image": "mediforce-agent:cdisc-case-3",
         "repo": "vedhav/cdisc-case-3",
         "commit": "fc035aadf899b19f99d1de763312e1b948055a78",
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
-        "timeoutMinutes": 25
+        "timeoutMinutes": 10,
+        "command": "python3 /app/container/build_traceability.py"
       }
     },
     {
