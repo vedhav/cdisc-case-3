@@ -34,7 +34,7 @@
       "type": "creation",
       "executor": "agent",
       "plugin": "claude-code-agent",
-      "description": "AI. The uploaded inputs are read-only under /data/: the USDM study-definition JSON (identify it by its usdmVersion / study.versions) plus the SDTM datasets. FIRST, persist the SDTM datasets from /data/ into /workspace/sdtm/ (everything that is not the USDM) so the later derive-adam step can read them. THEN run the tlf-planner skill on the USDM: interpret objectives/endpoints, add ICH E3 regulatory scaffolding, fan out statistical analyses (imputation/subgroup/timepoint), check data feasibility against the now-available SDTM domains, and number the outputs. Writes study-model.json, tlf-plan.json, and the human-readable tlf-index.md to both /workspace and /output, and a /output/result.json summary. On a revise re-entry, read the reviewer comment from the review-plan step and append it to /workspace/review_feedback.jsonl as {\"skill\":\"tlf-planner\",\"iteration\":N,\"comment\":\"...\"}, then correct only the flagged items.",
+      "description": "AI. The uploaded inputs are read-only under /data/: the USDM study-definition JSON plus the SDTM datasets. STEP 0 (MANDATORY, deterministic — do NOT hand-copy files): run `python3 /app/container/stage_inputs.py`. It content-detects the USDM (by usdmVersion / study.versions), writes it to /workspace/usdm.json, and persists every other upload into /workspace/sdtm/ (the SDTM inventory the later derive-adam step reads); it exits non-zero if no USDM or no SDTM is found — stop and report if so. THEN run the tlf-planner skill on /workspace/usdm.json: interpret objectives/endpoints, add ICH E3 regulatory scaffolding, fan out statistical analyses (imputation/subgroup/timepoint), check data feasibility against the staged SDTM domains, and number the outputs. Writes study-model.json, tlf-plan.json, and the human-readable tlf-index.md to both /workspace and /output, and a /output/result.json summary. On a revise re-entry, read the reviewer comment from the review-plan step and append it to /workspace/review_feedback.jsonl as {\"skill\":\"tlf-planner\",\"iteration\":N,\"comment\":\"...\"}, then correct only the flagged items.",
       "env": {
         "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
         "ANTHROPIC_API_KEY": "",
@@ -204,17 +204,34 @@
         }
       ],
       "verdicts": {
-        "approve": { "target": "build-traceability", "label": "Approve TLFs", "intent": "success" },
+        "approve": { "target": "assemble-trace-graph", "label": "Approve TLFs", "intent": "success" },
         "revise": { "target": "generate-tlfs", "label": "Request Changes", "intent": "warning", "requiresComment": true }
       }
     },
     {
+      "id": "assemble-trace-graph",
+      "name": "Assemble traceability graph (deterministic)",
+      "type": "creation",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic. Join study-model.json, tlf-plan.json, analysis-spec.json, adam-spec.json, the staged SDTM inventory (/workspace/sdtm/), and the per-TLF ARD/rendered/code artifacts (/workspace/{ard,tfl,code}/) into the objective->endpoint->SDTM->ADaM->TLF graph model (nodes, edges, two-way coverage, issues feed, counts, status tallies) per the traceability-builder graph-data-schema. No LLM — the correctness-critical join that a language model must not guess. Writes /workspace/trace_graph.json + /workspace/manifest.json (and copies both to /output), plus /output/result.json.",
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "fc035aadf899b19f99d1de763312e1b948055a78",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 10,
+        "command": "python3 /app/container/build_trace_graph.py"
+      }
+    },
+    {
       "id": "build-traceability",
-      "name": "Assemble traceability explorer",
+      "name": "Render traceability explorer",
       "type": "creation",
       "executor": "agent",
       "plugin": "claude-code-agent",
-      "description": "AI. Run the traceability-builder skill: assemble the objective -> endpoint -> SDTM -> ADaM -> TLF graph (linked by the ARD) from study-model.json, tlf-plan.json, analysis-spec.json, adam-spec.json, and the per-TLF ard artifacts, and render a self-contained interactive node-graph HTML explorer with lineage highlighting, per-node detail panels (rendered TLF + status), and status badges. Writes /output/traceability.html, /output/trace_graph.json, and /output/manifest.json, plus /output/result.json.",
+      "description": "AI. RENDER ONLY — the graph is already assembled deterministically by assemble-trace-graph; do NOT recompute coverage, edges, status, or the issues feed. Run the traceability-builder skill in render mode: read /workspace/trace_graph.json (the authoritative node/edge/issues model) and emit a single self-contained interactive node-graph HTML explorer (vanilla JS + SVG, zero external requests) with lineage highlighting, per-node detail panels (rendered TLF + status), an issues panel, type/status filters, search, and light/dark theming. Writes /output/traceability.html and copies /output/trace_graph.json + /output/manifest.json, plus /output/result.json.",
       "env": {
         "ANTHROPIC_AUTH_TOKEN": "{{OPENROUTER_API_KEY}}",
         "ANTHROPIC_API_KEY": "",
@@ -230,6 +247,23 @@
         "dockerfile": "Dockerfile",
         "repoAuth": "GITHUB_TOKEN",
         "timeoutMinutes": 25
+      }
+    },
+    {
+      "id": "check-feedback",
+      "name": "Check for review feedback",
+      "type": "creation",
+      "executor": "script",
+      "plugin": "script-container",
+      "description": "Deterministic gate. Read /workspace/review_feedback.jsonl (reviewer comments captured by plan-tlfs, build-specs, and generate-tlfs on each revise) and emit { hadRevisions, revisionCount, skills } to /output/result.json. Routes the run into the skill-refinement tail (propose-skill-update -> open-skill-pr) only when a review actually sent something back; a clean first-pass run skips both and goes straight to done.",
+      "script": {
+        "image": "mediforce-agent:cdisc-case-3",
+        "repo": "vedhav/cdisc-case-3",
+        "commit": "fc035aadf899b19f99d1de763312e1b948055a78",
+        "dockerfile": "Dockerfile",
+        "repoAuth": "GITHUB_TOKEN",
+        "timeoutMinutes": 5,
+        "command": "python3 /app/container/check_feedback.py"
       }
     },
     {
@@ -289,9 +323,12 @@
     { "from": "review-specs", "to": "build-specs" },
     { "from": "derive-adam", "to": "generate-tlfs" },
     { "from": "generate-tlfs", "to": "review-tlfs" },
-    { "from": "review-tlfs", "to": "build-traceability" },
+    { "from": "review-tlfs", "to": "assemble-trace-graph" },
     { "from": "review-tlfs", "to": "generate-tlfs" },
-    { "from": "build-traceability", "to": "propose-skill-update" },
+    { "from": "assemble-trace-graph", "to": "build-traceability" },
+    { "from": "build-traceability", "to": "check-feedback" },
+    { "from": "check-feedback", "to": "propose-skill-update", "when": "output.hadRevisions == true" },
+    { "from": "check-feedback", "to": "done", "when": "output.hadRevisions == false" },
     { "from": "propose-skill-update", "to": "open-skill-pr" },
     { "from": "open-skill-pr", "to": "done" }
   ]

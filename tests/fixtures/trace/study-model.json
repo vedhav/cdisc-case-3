@@ -1,0 +1,50 @@
+{
+  "study_id": "SMOKE01",
+  "study_name": "Smoke Study",
+  "title": "A smoke-test study for build_trace_graph.py",
+  "phase": "Phase II",
+  "objectives": [
+    {
+      "id": "Objective_1",
+      "name": "OBJ1",
+      "level": "Primary",
+      "description": "Primary efficacy objective",
+      "text": "To determine the efficacy of the drug on ADAS-Cog (11) at Week 24",
+      "endpoint_ids": ["Endpoint_1"]
+    },
+    {
+      "id": "Objective_2",
+      "name": "OBJ2",
+      "level": "Secondary",
+      "description": "Secondary objective (unresolved endpoint)",
+      "text": "To assess a to-be-determined secondary measure",
+      "endpoint_ids": ["Endpoint_2"]
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "Endpoint_1",
+      "name": "END1",
+      "objective_id": "Objective_1",
+      "level": "Primary",
+      "text": "ADAS-Cog (11) change from baseline at Week 24",
+      "parsed": {
+        "measure": "ADAS-Cog (11)",
+        "measure_type": "continuous",
+        "timepoints": ["Week 24"],
+        "domain_hint": "efficacy-cognition"
+      },
+      "resolved": true
+    },
+    {
+      "id": "Endpoint_2",
+      "name": "END2",
+      "objective_id": "Objective_2",
+      "level": "Secondary",
+      "text": "*** To be determined ***",
+      "parsed": {},
+      "resolved": false
+    }
+  ],
+  "unresolved_endpoints": ["Endpoint_2"]
+}

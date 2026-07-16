@@ -77,9 +77,19 @@ def write_result(payload: dict) -> None:
 
 
 def fail(message: str) -> None:
+    """Record the failure and exit 0 (fail-soft).
+
+    Opening the skill-lesson PR is a non-critical side effect at the very end of
+    the run — a GitHub hiccup, a token missing pull-requests:write, or an
+    unparseable input must NOT bury an already-completed, human-approved TLF
+    pipeline by failing its last step. We surface the reason in result.json (and
+    stderr for the step log) and let the run advance to done. `continueOnError`
+    would be the engine-level equivalent, but it is honoured only on `action`
+    steps, not script steps — so the soft exit lives here.
+    """
     write_result({"prCreated": False, "prUrl": None, "branch": None, "skills": [], "reason": f"error: {message}"})
     print(f"open_skill_pr: {message}", file=sys.stderr)
-    sys.exit(1)
+    sys.exit(0)
 
 
 def skip(branch: str | None, reason: str) -> None:

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "AN-14-3.01",
+    "table_id": "14-3.01",
+    "title": "Primary Endpoint Analysis: ADAS-Cog (11)",
+    "purpose": "Primary efficacy analysis (ANCOVA, LOCF)",
+    "analysisSet": { "id": "AnalysisSet.Efficacy", "label": "Efficacy Population", "condition": "EFFFL = 'Y'", "source": "ADSL.EFFFL" },
+    "dataSubset": { "id": "DataSubset.ADQSADAS", "dataset": "ADQSADAS", "condition": "PARAMCD = 'ACTOT11' AND AVISITN = 24 AND ANL01FL = 'Y'" }
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "candidate_id": "eff-END1-ancova-wk24-locf",
+    "type": "Table",
+    "category": "efficacy",
+    "title": "Primary Endpoint: ADAS-Cog (11) CFB to Week 24 (LOCF)",
+    "traces_to": { "objective_ids": ["Objective_1"], "endpoint_ids": ["Endpoint_1"], "regulatory_rule": null },
+    "analysis": { "method": "ANCOVA", "population": "Efficacy", "timepoint": "Week 24", "imputation": "LOCF", "subgroup": null, "comparison": "dose-response" },
+    "data_requirements": { "adam": ["ADSL", "ADQSADAS"], "sdtm_source": ["DM", "QS"] },
+    "status": "planned",
+    "status_reason": null,
+    "priority": "primary",
+    "produced_by": "efficacy-statistics-planner",
+    "final_id": "T-14-3.01",
+    "notes": []
+  },
+  {
+    "candidate_id": "disp-reg-disposition",
+    "type": "Table",
+    "category": "disposition",
+    "title": "Subject Disposition",
+    "traces_to": { "objective_ids": [], "endpoint_ids": [], "regulatory_rule": "ICH E3 14.1" },
+    "analysis": { "method": "Descriptive", "population": "ITT", "timepoint": null, "imputation": "none", "subgroup": null, "comparison": null },
+    "data_requirements": { "adam": ["ADSL"], "sdtm_source": ["DM"] },
+    "status": "planned",
+    "status_reason": null,
+    "priority": "primary",
+    "produced_by": "scaffolding",
+    "final_id": "T-14-1.01",
+    "notes": []
+  },
+  {
+    "candidate_id": "dev-reg-protocol-deviations",
+    "type": "Listing",
+    "category": "other",
+    "title": "Protocol Deviations",
+    "traces_to": { "objective_ids": [], "endpoint_ids": [], "regulatory_rule": "ICH E3 14.x" },
+    "analysis": { "method": "none", "population": "ITT", "timepoint": null, "imputation": "none", "subgroup": null, "comparison": null },
+    "data_requirements": { "adam": [], "sdtm_source": ["DV"] },
+    "status": "blocked",
+    "status_reason": "Domain DV is absent from the SDTM inventory; the Protocol Deviations listing cannot be built.",
+    "priority": "supportive",
+    "produced_by": "scaffolding",
+    "final_id": null,
+    "notes": []
+  }
+]

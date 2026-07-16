@@ -15,12 +15,12 @@ justify it. Three human review gates (plan, specs, TFLs) each feed a
 **self-learning skill-refinement loop**: reviewer feedback is distilled into
 durable, per-skill lessons and opened as a PR, so the skills improve over time.
 
-## Pipeline (14 steps)
+## Pipeline (15 steps)
 
 | # | Step | Executor | Skill / script | Output |
 |---|------|----------|----------------|--------|
 | 1 | upload-inputs | human | — | upload the study's USDM JSON + SDTM datasets (→ `/data/` for plan-tlfs) |
-| 2 | plan-tlfs | agent | `tlf-planner` | study-model.json, tlf-plan.json, tlf-index.md (+ persists SDTM → `/workspace/sdtm/`) |
+| 2 | plan-tlfs | agent | `stage_inputs.py` + `tlf-planner` | study-model.json, tlf-plan.json, tlf-index.md (STEP 0 stages USDM → `/workspace/usdm.json` + SDTM → `/workspace/sdtm/`) |
 | 3 | audit-plan | agent | `tlf-plan-critic` | coverage-report.md + verdict |
 | 4 | **review-plan** | human review | — | approve → specs · revise → plan |
 | 5 | build-specs | agent | `tlf-analysis-spec` | analysis-spec.json, adam-spec.json |
@@ -28,18 +28,34 @@ durable, per-skill lessons and opened as a PR, so the skills improve over time.
 | 7 | derive-adam | agent | `sdtm-to-adam` | `/workspace/adam/*` + conformance report |
 | 8 | generate-tlfs | agent | `tlf-generator` | ARD + rendered TFLs |
 | 9 | **review-tlfs** | human review | — | approve → trace · revise → generate |
-| 10 | build-traceability | agent | `traceability-builder` | traceability.html, trace_graph.json, manifest.json |
-| 11 | propose-skill-update | agent | `propose-skill-lesson` | per-skill lesson blocks |
-| 12 | open-skill-pr | script | `open_skill_pr.py` | PR against main (or clean no-op) |
-| 13 | done | human (terminal) | — | — |
+| 10 | assemble-trace-graph | script | `build_trace_graph.py` | trace_graph.json, manifest.json (deterministic join + coverage + issues) |
+| 11 | build-traceability | agent | `traceability-builder` (render-only) | traceability.html (renders trace_graph.json — no recompute) |
+| 12 | check-feedback | script | `check_feedback.py` | `{hadRevisions}` — gates the skill-refinement tail |
+| 13 | propose-skill-update | agent | `propose-skill-lesson` | per-skill lesson blocks *(only when hadRevisions)* |
+| 14 | open-skill-pr | script | `open_skill_pr.py` | PR against main (or clean no-op) *(only when hadRevisions)* |
+| 15 | done | human (terminal) | — | — |
 
 All inputs are uploaded up front at a single `file-upload` step (step 1): the
 **USDM** JSON and the **SDTM** datasets together. They are made available read-only
-under `/data/` to the next step (plan-tlfs), which persists the SDTM into
-`/workspace/sdtm/` for the later ADaM step — so no separate staging step is needed.
+under `/data/` to the next step (plan-tlfs) — which is the *only* step that sees
+`/data/`. Its mandatory STEP 0 runs the deterministic `stage_inputs.py`, which
+content-detects the USDM and persists the SDTM into `/workspace/sdtm/` for every
+later step — so no separate upload-staging workflow step is needed.
+
+**Traceability is split for correctness:** `assemble-trace-graph` (step 10) does the
+objective→endpoint→SDTM→ADaM→TLF join, two-way coverage, and issues feed **in code**
+(`build_trace_graph.py`) so the proof numbers are deterministic; `build-traceability`
+(step 11) is then a render-only agent that turns `trace_graph.json` into the HTML
+explorer without recomputing anything.
+
+**The self-learning tail is gated:** `check-feedback` (step 12) reads
+`/workspace/review_feedback.jsonl` and only routes into `propose-skill-update` +
+`open-skill-pr` when a review actually requested changes; a clean first-pass run
+skips both and goes straight to `done`. `open-skill-pr` is also **fail-soft** — a PR
+hiccup records `prCreated:false` and exits 0 rather than failing an already-approved run.
 
 Transitions include three revise loops (each review gate can send the run back
-to its producing agent step).
+to its producing agent step) plus the `hadRevisions` branch after `check-feedback`.
 
 ### The self-learning skill-refinement loop (retained + generalized)
 
@@ -49,8 +65,9 @@ On each **Request Changes**, the producing agent step (`plan-tlfs`,
 `propose-skill-update` groups that feedback by skill and distils durable,
 skill-general lessons; `open-skill-pr` appends each to the target skill's
 `references/lessons-learned.md` and opens one PR against `main`. A human merges;
-the next run reads the improved skills. First-pass approvals (no revisions)
-produce no PR.
+the next run reads the improved skills. The `check-feedback` gate short-circuits
+the whole tail on first-pass approvals (no revisions), so they produce no PR and
+don't pay for the `propose-skill-update` agent.
 
 ## Skills (in `plugins/cdisc-case-3/skills`, read at run time via `externalSkillsRepo` + `skillsDir`)
 
@@ -77,9 +94,20 @@ baked into the image.
 mediforce-golden-image`). Adds the pinned R stack — admiral/admiraldev/metacore/
 metatools (ADaM); cards/cardx/emmeans/mmrm/survival/broom.helpers (ARD + models);
 gtsummary/gt/tfrmt/rtables/rlistings/ggsurvfit/ggplot2 (display); dplyr/tidyr/
-haven/jsonlite — plus Python `pyyaml`, the step scripts (`container/`), and the
-bundled CDISCPILOT01 reference (`fixtures/`). Skills are **not** baked in. Build:
-`docker build -t mediforce-agent:cdisc-case-3 .`.
+haven/jsonlite — plus Python `pyyaml` and the step scripts (`COPY container/ →
+/app/container/`). Skills are **not** baked in (read at run time via
+`externalSkillsRepo`); `fixtures/` is **not** baked in either — it's a local
+smoke-test reference only. Build: `docker build -t mediforce-agent:cdisc-case-3 .`.
+
+The baked `container/` scripts (all invoked by `command:` steps as
+`python3 /app/container/<name>`):
+
+| Script | Step | Does |
+|--------|------|------|
+| `stage_inputs.py` | plan-tlfs (STEP 0) | content-detect the USDM, persist USDM + SDTM into `/workspace` |
+| `build_trace_graph.py` | assemble-trace-graph | deterministic objective→…→TLF graph join → `trace_graph.json` + `manifest.json` |
+| `check_feedback.py` | check-feedback | read `review_feedback.jsonl` → `{hadRevisions}` gate |
+| `open_skill_pr.py` | open-skill-pr | append distilled lessons + open one PR (fail-soft) |
 
 ## Output contract (`/output`)
 

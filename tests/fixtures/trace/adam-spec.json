@@ -1,0 +1,34 @@
+{
+  "protocol": "SMOKE01",
+  "datasets": [
+    {
+      "name": "ADSL",
+      "class": "ADSL",
+      "sdtm_source": ["DM"],
+      "used_by_tables": ["14-3.01", "14-1.01"],
+      "parameters": [],
+      "variables": [
+        { "name": "EFFFL", "role": "efficacy population", "source": "ADSL" },
+        { "name": "SITEGR1", "role": "pooled site group derived from DM", "source": "ADSL" }
+      ],
+      "derivation_requirements": []
+    },
+    {
+      "name": "ADQSADAS",
+      "class": "BDS",
+      "sdtm_source": ["QS"],
+      "used_by_tables": ["14-3.01"],
+      "parameters": [
+        { "paramcd": "ACTOT11", "param": "ADAS-Cog(11) Total", "note": "NOT 'ACTOT' (subscore)" }
+      ],
+      "variables": [
+        { "name": "AVAL", "role": "analysis value from QS" },
+        { "name": "CHG", "role": "change from baseline = AVAL - BASE" }
+      ],
+      "derivation_requirements": []
+    }
+  ],
+  "populations": [
+    { "flag": "EFFFL", "label": "Efficacy", "definition": "…" }
+  ]
+}

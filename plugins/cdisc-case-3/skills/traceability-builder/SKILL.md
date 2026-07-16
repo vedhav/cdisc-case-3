@@ -34,6 +34,19 @@ study-model + tlf-plan + analysis-spec + adam-spec + per-table outputs (md/ard/R
  [traceability-builder]  ──►  assemble graph JSON (nodes + edges + status)  ──►  ONE self-contained .html
 ```
 
+## Two modes — render vs assemble
+
+- **Render mode (the cdisc-case-3 workflow — default when it applies).** A deterministic
+  step (`assemble-trace-graph` / `build_trace_graph.py`) has already built the authoritative
+  graph model at **`/workspace/trace_graph.json`**, conforming to `references/graph-data-schema.md`.
+  When that file exists, **read it and render only** — do NOT recompute nodes, edges, status,
+  coverage, or the issues feed (the numbers are the proof and must stay deterministic). Skip
+  Workflow steps 1–5 below; go straight to step 6 (Emit) and step 7 (Verify), consuming the
+  `study`/`counts`/`status`/`issues`/`nodes`/`edges` object as-is. Per-TLF `generatedMd` /
+  `ardJson` / `generateR` are already embedded in each TLF node's `meta`.
+- **Assemble mode (standalone use).** When no `trace_graph.json` exists, run the full
+  Workflow (steps 1–7) to assemble the model from the pipeline artifacts, then render.
+
 ## When to use
 
 Use after a pipeline run (Stages 1-4) has produced a `tlf/` output tree. Trigger on any request to

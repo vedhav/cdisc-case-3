@@ -32,9 +32,27 @@ Deriving TLFs draws on four independent sources; the list is their union:
 A planner that reads only objectives/endpoints under-produces. See
 the protocol-to-tfl design notes (objective-endpoint-tlf-mapping, tlf-planner-agent-design) for the full rationale and the worked CDISCPILOT01 example.
 
+## Step 0 — Stage the uploaded inputs (mandatory, deterministic)
+
+When this skill runs as the `plan-tlfs` workflow step, the uploaded files are mounted
+read-only at `/data` (only on this step). **Before any planning, run the baked staging
+script — do NOT hand-copy files:**
+
+```
+python3 /app/container/stage_inputs.py
+```
+
+It content-detects the USDM among the uploads (by `usdmVersion` / `study.versions`),
+writes it to `/workspace/usdm.json`, and persists every other upload into
+`/workspace/sdtm/` (the SDTM inventory the later `derive-adam` step reads). It exits
+non-zero if no USDM or no SDTM dataset is present — if that happens, stop and report the
+error rather than proceeding. Then plan from `/workspace/usdm.json` and treat
+`/workspace/sdtm/` as the available SDTM domains in phase 5. (Outside the workflow, when
+you already have a USDM path, skip this step and use that path directly.)
+
 ## Inputs
 
-- **Required:** path to the USDM study-definition JSON.
+- **Required:** path to the USDM study-definition JSON (`/workspace/usdm.json` in the workflow).
 - **Optional:** a SAP (PDF/text) — if present, extract the *actual* pre-specified analysis
   variants in phase 4 instead of applying conventional defaults.
 - **Optional:** the SDTM/ADaM data directory — used in phase 5 for feasibility. Defaults to

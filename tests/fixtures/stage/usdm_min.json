@@ -1,0 +1,10 @@
+{
+  "usdmVersion": "3.0.0",
+  "study": {
+    "id": "SMOKE01",
+    "name": "SMOKE01",
+    "versions": [
+      { "versionIdentifier": "1", "studyDesigns": [] }
+    ]
+  }
+}
