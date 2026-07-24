@@ -8,14 +8,18 @@ ADaM, generates the **ARD** (numbers) and rendered **TFLs** (display), and
 assembles an interactive **objective → endpoint → SDTM → ADaM → TFL**
 traceability explorer.
 
-**Thesis:** *plan from the objectives, generate from the spec, prove with the
-numbers.* Accuracy is measured cell-by-cell against known-good CSR outputs; every
-TFL traces back through the ARD to the ADaM, SDTM, endpoint, and objective that
-justify it. Three human review gates (plan, specs, TFLs) each feed a
-**self-learning skill-refinement loop**: reviewer feedback is distilled into
-durable, per-skill lessons and opened as a PR, so the skills improve over time.
+**Thesis:** *plan from the objectives, generate from the spec, prove against the
+standards.* Every TFL traces back through the ARD to the ADaM, SDTM, endpoint,
+and objective that justify it. Validation is anchored to the **CDISC standards**,
+not to a golden output — so it generalises to any study, whether or not a
+known-good CSR exists: two deterministic conformance gates enforce that the
+analysis metadata is a schema-valid **ARS** ReportingEvent and that the derived
+**ADaM** passes **CDISC CORE** against a generated **Define-XML 2.1**. Three human
+review gates (plan, specs, TFLs) each feed a **self-learning skill-refinement
+loop**: reviewer feedback is distilled into durable, per-skill lessons and opened
+as a PR, so the skills improve over time.
 
-## Pipeline (13 steps)
+## Pipeline (16 steps)
 
 | # | Step | Executor | Skill / script | Output |
 |---|------|----------|----------------|--------|
@@ -23,15 +27,41 @@ durable, per-skill lessons and opened as a PR, so the skills improve over time.
 | 2 | plan-tlfs | agent | `tlf-planner` | study-model.json, tlf-plan.json, tlf-index.md (+ persists SDTM → `/workspace/sdtm/`) |
 | 3 | audit-plan | agent | `tlf-plan-critic` | coverage-report.md + verdict |
 | 4 | **review-plan** | human review | — | approve → specs · revise → plan |
-| 5 | build-specs | agent | `tlf-analysis-spec` | analysis-spec.json, adam-spec.json |
-| 6 | **review-specs** | human review | — | approve → ADaM · revise → specs |
-| 7 | derive-adam | agent | `sdtm-to-adam` | `/workspace/adam/*` + conformance report |
-| 8 | generate-tlfs | agent | `tlf-generator` | ARD + rendered TFLs |
-| 9 | **review-tlfs** | human review | — | approve → trace · revise → generate |
-| 10 | build-traceability | script | `build_traceability.py` | traceability.html, trace_graph.json, manifest.json |
-| 11 | propose-skill-update | agent | `propose-skill-lesson` | per-skill lesson blocks |
-| 12 | open-skill-pr | script | `open_skill_pr.py` | PR against main (or clean no-op) |
-| 13 | done | human (terminal) | — | — |
+| 5 | build-specs | agent | `tlf-analysis-spec` | analysis-spec.json, adam-spec.json, **reporting-event.json (ARS)** |
+| 6 | **validate-ars** | script (gate) | `validate_ars.py` | ars-validation.md · pass → specs review · fail → build-specs (≤3) |
+| 7 | **review-specs** | human review | — | approve → ADaM · revise → specs |
+| 8 | derive-adam | agent | `sdtm-to-adam` | `/workspace/adam/*` + conformance report |
+| 9 | **generate-define** | script | `generate_define.py` | define.xml (Define-XML 2.1) |
+| 10 | **validate-core** | script (gate) | `validate_core.py` | core-report.md · pass → generate · fail → derive-adam (≤2) |
+| 11 | generate-tlfs | agent | `tlf-generator` | ARD + rendered TFLs |
+| 12 | **review-tlfs** | human review | — | approve → trace · revise → generate |
+| 13 | build-traceability | script | `build_traceability.py` | traceability.html, trace_graph.json, manifest.json |
+| 14 | propose-skill-update | agent | `propose-skill-lesson` | per-skill lesson blocks |
+| 15 | open-skill-pr | script | `open_skill_pr.py` | PR against main (or clean no-op) |
+| 16 | done | human (terminal) | — | — |
+
+### The two automated conformance gates
+
+Both are deterministic `script` steps that **always exit 0** and encode the
+outcome in `result.json`; the workflow transitions branch on `output.passed` and
+a bounded `output.attempts` counter (persisted in `/workspace/.gate-attempts.json`).
+
+- **`validate-ars`** validates `reporting-event.json` against the ARS LDM JSON
+  Schema (baked into the image at `container/schemas/ars_ldm.schema.json`) plus
+  reference-integrity checks. Pass → human spec review; fail → back to
+  `build-specs` with the exact errors (`ars-validation.md`), capped at **3**
+  attempts, after which it proceeds to human review with the errors surfaced.
+- **`validate-core`** runs the CDISC Open Rules Engine (`cdisc-rules-engine`,
+  CLI `core`) over the derived ADaM **against `define.xml`**. ERROR-severity
+  findings gate: pass → `generate-tlfs`; fail → back to `derive-adam` (capped at
+  **2**), then proceed forward with unresolved findings carried to `review-tlfs`
+  for the reviewer to justify. WARNING/NOTICE findings are reported, not blocking.
+  If the engine/rules-cache is unavailable it reports `status=core-unavailable`
+  and proceeds unless `CORE_REQUIRED=true` — never a silent pass.
+
+The loop caps (3, 2) live BOTH in the transition `when` expressions and as the
+scripts' `ARS_MAX_ATTEMPTS` / `CORE_MAX_ATTEMPTS` defaults; keep them in sync if
+you change either.
 
 All inputs are uploaded up front at a single `file-upload` step (step 1): the
 **USDM** JSON and the **SDTM** datasets together. They are made available read-only

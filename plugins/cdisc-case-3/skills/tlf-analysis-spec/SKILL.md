@@ -7,13 +7,20 @@ description: "Turn a reviewed TLF plan into the analysis specs + ADaM variable s
 
 ## Purpose
 
-Turn a **human-reviewed TLF plan** into the two artifacts that drive the rest of the pipeline:
+Turn a **human-reviewed TLF plan** into the three artifacts that drive the rest of the pipeline:
 
 1. **`analysis-spec.json`** — one ARS-*aligned* analysis recipe per producible TLF (population,
    grouping, record filter, analysis variables, statistical method(s) + operations, rounding).
 2. **`adam-spec.json`** — the variable-level ADaM requirements aggregated across *all* TLFs
    (datasets, parameters, variables, flags, populations) plus the mandatory derivation rules and
    the data-quality N-gate.
+3. **`reporting-event.json`** — a CDISC **ARS (Analysis Results Standard) ReportingEvent** that
+   re-expresses the same analyses in the standard ARS Low-level Data Model (analysisSets, methods,
+   analysisGroupings, analyses, outputs, a mainListOfContents), so downstream traceability and
+   conformance anchor to the CDISC standard rather than a bespoke shape. The automated
+   `validate-ars` gate validates it against the ARS LDM JSON Schema **immediately after this step**
+   and sends the run back here (with the specific errors) if it does not conform — so it must be
+   schema-valid, not merely "ARS-aligned".
 
 This is **Step 2** of the automated TLF workflow — the bridge between the plan and compute:
 
@@ -24,7 +31,7 @@ USDM ─▶ tlf-planner ─▶ tlf-plan-critic ─▶ [HUMAN REVIEW]
                                               │
                               ─▶ [tlf-analysis-spec] ◀── YOU ARE HERE
                                               │
-                     analysis-spec.json + adam-spec.json ─▶ [HUMAN REVIEW GATE]
+          analysis-spec.json + adam-spec.json + reporting-event.json ─▶ [validate-ars gate] ─▶ [HUMAN REVIEW GATE]
                                               │
               sdtm-to-adam (consumes adam-spec)   tlf-generator (consumes analysis-spec + ADaM)
 ```
@@ -63,8 +70,20 @@ Write to the same plan directory:
   `table_id` (the `final_id` minus the `T-`/`F-`/`L-` prefix).
 - `outputs/{study}/tlf-plan/adam-spec.json` — a single object conforming exactly to
   `references/adam-spec-schema.md`.
+- `reporting-event.json` — the ARS ReportingEvent (Phase 2.5), validated by the `validate-ars`
+  gate against `references/ars-reporting-event-schema.md`.
 
-Then print a summary and tell the user to **review both specs** before running `sdtm-to-adam`.
+**In the workflow container**, write all three (`analysis-spec.json`, `adam-spec.json`,
+`reporting-event.json`) to **both `/workspace` and `/output`** at the paths named above — the
+`validate-ars` gate, `sdtm-to-adam`, and `tlf-generator` read them from there.
+
+**On a `validate-ars` fail re-entry** (the automated gate found ARS errors), read
+`/workspace/ars-validation.md`, fix ONLY the flagged schema/reference errors in
+`reporting-event.json` (and any analysis-spec entry they trace to), and re-emit. Append the same
+feedback to `/workspace/review_feedback.jsonl` as `{"skill":"tlf-analysis-spec",...}` so the
+self-learning loop can distil a durable lesson.
+
+Then print a summary and tell the user to **review the specs** before running `sdtm-to-adam`.
 
 ## Workflow
 
@@ -158,6 +177,40 @@ Build one `adam-spec.json` from the **union** of all producible candidates' data
 4. **Data-quality N-gate** — record the required assertion: after derivation, each analysis set's
    N must match its population flag count (e.g. Week-24 efficacy N == `EFFFL='Y'`), warning loudly
    on any shortfall — the visit-window bug would otherwise pass silently and tank the match.
+
+### Phase 2.5 — Emit the ARS ReportingEvent (`reporting-event.json`)
+
+Re-express the analyses you just authored as a **schema-valid ARS ReportingEvent**. The
+`validate-ars` gate validates this against the ARS LDM schema and, on any error, routes the run
+back to this step with the exact failures — so build it to conform. Read
+`references/ars-reporting-event-schema.md` for the field-by-field contract; the essentials:
+
+- **Root (required):** `id`, `name`, `mainListOfContents`.
+- **`analysisSets[]`** — one per distinct population flag you used (EFFFL/SAFFL/ITTFL/…). Each needs
+  `id`, `name`, `level`, `order`, and a `condition` `{dataset, variable, comparator:"EQ",
+  value:["Y"]}`.
+- **`analysisGroupings[]`** — the treatment grouping (`GRP.TRT`): `id`, `name`, `dataDriven:false`,
+  `groupingVariable:"TRTP"`, and a `groups[]` entry per arm (`id`, `name`, `level`, `order`).
+- **`methods[]`** — one per distinct statistical method (Descriptive/ANCOVA/Incidence/KaplanMeier/
+  MMRM/…): `id`, `name`, and `operations[]` where each operation has `id`, `order`, `name`.
+- **`analyses[]`** — **one per producible TLF**: `id` (`AN.<table_id>`), `name`, `methodId` (→ a
+  `methods[].id`), `analysisSetId` (→ an `analysisSets[].id`), `orderedGroupings:[{order:1,
+  groupingId, resultsByGroup:true}]`, `dataset`, and the two required controlled terms:
+  - `reason` = `{controlledTerm:"SPECIFIED IN SAP"}` (or `"SPECIFIED IN PROTOCOL"` / `"DATA
+    DRIVEN"`).
+  - `purpose` = `{controlledTerm:"PRIMARY OUTCOME MEASURE"}` (or SECONDARY/EXPLORATORY) for outcome
+    analyses. For non-outcome analyses (safety, disposition, demographics) the enum has no term —
+    use a **sponsor purpose** `{"sponsorTermId":"SPT.SAFETY"}` and declare it once in
+    `terminologyExtensions:[{id:"TE.PURPOSE", enumeration:"AnalysisPurposeEnum",
+    sponsorTerms:[{id:"SPT.SAFETY", submissionValue:"SAFETY"}]}]`.
+- **`outputs[]`** — one per TLF display: `id` (`OUT.<table_id>`), `name`, `displays:[{order:1,
+  display:{id:"D.<table_id>", name}}]`.
+- **`mainListOfContents`** — `{name, contentsList:{listItems:[{level:1, order:N, name, outputId}
+  …]}}`; every `analysisId`/`outputId` referenced must resolve to a defined analysis/output.
+
+Every `methodId`, `analysisSetId`, `groupingId`, `analysisId`, and `outputId` must resolve — the
+gate rejects dangling references. Keep ids stable and derived from `table_id` so the traceability
+graph can bridge ARS ↔ TLF.
 
 ### Phase 3 — Write and hand off
 Write `analysis-spec.json` (array) and `adam-spec.json`. Validate each object against its schema
