@@ -9,7 +9,7 @@
   },
   "externalSkillsRepo": {
     "url": "https://github.com/vedhav/cdisc-case-3",
-    "commit": "aaa04123d74094b96a9f0ce41cdf56b79fda5989",
+    "commit": "454e7ae7fa29de91670d069141d5c5d3df06fe6f",
     "auth": "GITHUB_TOKEN"
   },
   "steps": [
